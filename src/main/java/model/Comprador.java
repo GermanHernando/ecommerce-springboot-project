@@ -1,4 +1,4 @@
-package arg.tech.initspring.domain.model;
+package model;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -10,7 +10,7 @@ public class Comprador extends Usuario {
 	private int telefono;
 	private String direccion;
 	private int codigoPostal;
-	private Carrito carrito;
+	//private Carrito carrito; El carrito puede ser usado como una instancia pero el carrito, queda en caché, no se modela en la DB
 	private Set<Pedido>pedidos;
 	
 	public Comprador(String email, String contrasenia, String nombre, String apellido, int telefono, String direccion,
@@ -21,7 +21,7 @@ public class Comprador extends Usuario {
 		this.telefono = telefono;
 		this.direccion = direccion;
 		this.codigoPostal = codigoPostal;
-		this.carrito = new Carrito(this);
+		//this.carrito = new Carrito(this);
 		this.pedidos = new HashSet<Pedido>();
 	}
 	

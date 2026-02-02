@@ -1,10 +1,10 @@
-package arg.tech.initspring.domain.model;
+package model;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-import arg.tech.initspring.domain.enums.Estado;
-import arg.tech.initspring.interfaces.Calculable;
+import enums.Estado;
+import interfaces.Calculable;
 
 public class Pedido implements Calculable{
 	
@@ -41,13 +41,13 @@ public class Pedido implements Calculable{
 	}
 	
 	
-	public double calcularTotal() {
+	public double calcularTotalConImpuestos() {
 		return precioConIva(this.total);
 		
 	}
 
 	public Pago generarPago() {
-		this.pago = new Pago(this.fecha,calcularTotal());
+		this.pago = new Pago(this.fecha,calcularTotalConImpuestos());
 		return pago;
 	}
 	

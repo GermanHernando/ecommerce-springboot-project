@@ -1,4 +1,4 @@
-package arg.tech.initspring.domain.model;
+package model;
 
 public abstract class Producto {
 

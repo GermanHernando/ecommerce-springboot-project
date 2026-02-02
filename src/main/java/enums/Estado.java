@@ -1,4 +1,4 @@
-package arg.tech.initspring.domain.enums;
+package enums;
 
 public enum Estado {
 	CREADO,

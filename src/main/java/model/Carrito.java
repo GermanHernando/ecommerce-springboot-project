@@ -1,4 +1,4 @@
-package arg.tech.initspring.domain.model;
+package model;
 
 import java.util.ArrayList;
 import java.util.List;

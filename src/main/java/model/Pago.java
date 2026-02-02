@@ -1,8 +1,8 @@
-package arg.tech.initspring.domain.model;
+package model;
 
 import java.time.LocalDateTime;
 
-import arg.tech.initspring.domain.enums.MetodoPago;
+import enums.MetodoPago;
 
 public class Pago {
 
