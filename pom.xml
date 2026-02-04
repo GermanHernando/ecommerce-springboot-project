@@ -44,10 +44,13 @@
 
 
 <!--<?xml version="1.0" encoding="UTF-8"?>
+=======
+>>>>>>> d36c4fca06f811d0a9aef63e3adedb9c9716e8ab
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
+<<<<<<< HEAD
 	<parent>
 		<groupId>org.springframework.boot</groupId>
     	<artifactId>spring-boot-starter-parent</artifactId>
@@ -55,12 +58,19 @@
     	<relativePath/>
 	</parent>
 
+=======
+>>>>>>> d36c4fca06f811d0a9aef63e3adedb9c9716e8ab
   <groupId>com.mycompany.app</groupId>
   <artifactId>example-utils</artifactId>
   <version>1.0-SNAPSHOT</version>
 
+<<<<<<< HEAD
   <name>ecommerce-initspring</name>
    FIXME change it to the project's website 
+=======
+  <name>example-utils</name>
+  <!-- FIXME change it to the project's website -->
+>>>>>>> d36c4fca06f811d0a9aef63e3adedb9c9716e8ab
   <url>http://www.example.com</url>
 
   <properties>
@@ -70,6 +80,7 @@
 
   <dependencyManagement>
     <dependencies>
+<<<<<<< HEAD
     
      Source: https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-parent 
      <dependency>
@@ -78,6 +89,8 @@
      </dependency>
       
     
+=======
+>>>>>>> d36c4fca06f811d0a9aef63e3adedb9c9716e8ab
       <dependency>
         <groupId>org.junit</groupId>
         <artifactId>junit-bom</artifactId>
@@ -94,7 +107,11 @@
       <artifactId>junit-jupiter-api</artifactId>
       <scope>test</scope>
     </dependency>
+<<<<<<< HEAD
      Optionally: parameterized tests support 
+=======
+    <!-- Optionally: parameterized tests support -->
+>>>>>>> d36c4fca06f811d0a9aef63e3adedb9c9716e8ab
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-params</artifactId>
@@ -103,14 +120,24 @@
   </dependencies>
 
   <build>
+<<<<<<< HEAD
     <pluginManagement> lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) 
       <plugins>
          clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle 
+=======
+    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+      <plugins>
+        <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
+>>>>>>> d36c4fca06f811d0a9aef63e3adedb9c9716e8ab
         <plugin>
           <artifactId>maven-clean-plugin</artifactId>
           <version>3.4.0</version>
         </plugin>
+<<<<<<< HEAD
          default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging 
+=======
+        <!-- default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
+>>>>>>> d36c4fca06f811d0a9aef63e3adedb9c9716e8ab
         <plugin>
           <artifactId>maven-resources-plugin</artifactId>
           <version>3.3.1</version>
@@ -135,7 +162,11 @@
           <artifactId>maven-deploy-plugin</artifactId>
           <version>3.1.2</version>
         </plugin>
+<<<<<<< HEAD
          site lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle 
+=======
+        <!-- site lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
+>>>>>>> d36c4fca06f811d0a9aef63e3adedb9c9716e8ab
         <plugin>
           <artifactId>maven-site-plugin</artifactId>
           <version>3.12.1</version>
@@ -148,4 +179,7 @@
     </pluginManagement>
   </build>
 </project>
+<<<<<<< HEAD
 -->
+=======
+>>>>>>> d36c4fca06f811d0a9aef63e3adedb9c9716e8ab
