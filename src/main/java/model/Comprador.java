@@ -26,13 +26,13 @@ public class Comprador extends Usuario {
 	}
 	
 	
-	public void guardarProductoEnCarrito(Producto p, int cantidad) {
-		this.carrito.agregarItem(p, cantidad);
-	}
+	// public void guardarProductoEnCarrito(Producto p, int cantidad) {
+	// 	this.carrito.agregarItem(p, cantidad);
+	// }
 	
-	public void eliminarProductoDeCarrito(Producto p, int cantidad) {
-		this.carrito.eliminarItem(p, cantidad);
-	}
+	// public void eliminarProductoDeCarrito(Producto p, int cantidad) {
+	// 	this.carrito.eliminarItem(p, cantidad);
+	// }
 	
 	
 	public void agregarPedido(Pedido p) {
