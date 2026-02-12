@@ -2,6 +2,7 @@ package model;
 
 public abstract class Producto {
 
+	private static int id;
 	private String nombre;
 	private String marca;
 	private String color;
@@ -9,6 +10,7 @@ public abstract class Producto {
 	private int cantidad;
 	
 	public Producto(String nombre, String marca, String color, double precio, int cantidad) {
+		id++;
 		this.nombre = nombre;
 		this.marca = marca;
 		this.color = color;
