@@ -8,7 +8,7 @@ import interfaces.Calculable;
 
 public class Pedido implements Calculable{
 	
-	private static int id;
+	private Integer id;
 	private LocalDateTime fecha;
 	private double total;
 	private Usuario usuario;
@@ -18,7 +18,6 @@ public class Pedido implements Calculable{
 	
 		
 	public Pedido(Usuario usuario,List<ItemCarrito> itemsCarrito, double total) {
-		id++;
 		this.fecha = LocalDateTime.now();
 		this.total = total;
 		this.usuario = usuario;

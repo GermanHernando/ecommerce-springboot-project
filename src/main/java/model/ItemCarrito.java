@@ -2,6 +2,7 @@ package model;
 
 public class ItemCarrito {
 
+	private Integer id;
 	private Producto producto;
 	private double precio;
 	private int cantidad;

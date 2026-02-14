@@ -2,7 +2,7 @@ package model;
 
 public abstract class Producto {
 
-	private static int id;
+	private Integer id;
 	private String nombre;
 	private String marca;
 	private String color;

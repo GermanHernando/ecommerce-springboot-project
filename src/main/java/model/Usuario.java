@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 public abstract class Usuario {
 
 	private static final String MSJ_CONTRASENIA_INVALIDA = "La contrasenia no puede ser nula o vacía.";
+	private Integer id;
 	private String email;
 	private String contrasenia;
 	private String contraseniaAnterior;

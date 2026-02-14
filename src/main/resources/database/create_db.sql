@@ -21,7 +21,7 @@ CREATE TABLE PEDIDOS(
 ID bigint not null AUTO_INCREMENT,
 FECHA timestamp not null,
 TOTAL decimal(9,2)not null,
-ESTADO_ID varchar(50)not null,
+ESTADO varchar(50)not null,
 PRIMARY KEY(ID);
 );
 alter table PEDIDOS add constraint PED$COMP foreign key(COMPRADOR_ID) references COMPRADORES(ID)
@@ -57,36 +57,36 @@ alter table CELULARES add constraint CEL$PRO foreign key(ID) references PRODUCTO
 alter table CARGADORES add constraint CAR$PRO foreign key(ID) references PRODUCTOS(ID);
 
 CREATE TABLE ITEMS_PEDIDOS (
-    ID bigint not null AUTO_INCREMENT,
-    PEDIDO_ID bigint not null,
-    PRODUCTO_ID bigint not null,
-    CANTIDAD int not null,
-    PRECIO_UNITARIO decimal(9,2) not null,
-    PRIMARY KEY(ID);
+ID bigint not null AUTO_INCREMENT,
+PEDIDO_ID bigint not null,
+PRODUCTO_ID bigint not null,
+CANTIDAD int not null,
+PRECIO_UNITARIO decimal(9,2) not null,
+PRIMARY KEY(ID);
 );
-  alter table ITEMS_PEDIDOS add constraint ITEM$PED foreign key(PEDIDO_ID) references PEDIDOS(ID),
-  alter table ITEMS_PEDIDOS add constraint ITEM$PRO foreign key(PRODUCTO_ID) references PRODUCTOS(ID)
+ alter table ITEMS_PEDIDOS add constraint ITEM$PED foreign key(PEDIDO_ID) references PEDIDOS(ID),
+ alter table ITEMS_PEDIDOS add constraint ITEM$PRO foreign key(PRODUCTO_ID) references PRODUCTOS(ID)
 
-  CREATE TABLE PAGOS (
-    ID bigint not null AUTO_INCREMENT,
-    PEDIDO_ID bigint not null,
-    FECHA_PAGO timestamp not null,
-    METODO_PAGO varchar(30) not null,
-    MONTO decimal(9,2) not null,
-    ESTADO_ID varchar(50)not null,
-    PRIMARY KEY(ID);
+CREATE TABLE PAGOS (
+ID bigint not null AUTO_INCREMENT,
+PEDIDO_ID bigint not null,
+FECHA_PAGO timestamp not null,
+METODO_PAGO varchar(30) not null,
+MONTO decimal(9,2) not null,
+ESTADO varchar(50)not null,
+PRIMARY KEY(ID);
 );
-    alter table PAGOS add constraint PAGO$PED foreign key(PEDIDO_ID) references PEDIDOS(ID)
+alter table PAGOS add constraint PAGO$PED foreign key(PEDIDO_ID) references PEDIDOS(ID)
     
-    CREATE TABLE ESTADOS(
-    ID int not null,
-    VALOR varchar(50)not null,
-    PRIMARY KEY(ID);
-    )
+CREATE TABLE ESTADOS(
+ID int not null,
+VALOR varchar(50)not null,
+PRIMARY KEY(ID);
+)
     
-    CREATE TABLE METODOS_PAGOS(
-    ID int not null,
-    VALOR varchar(50)not null,
-    PRIMARY KEY(ID);
-    )
-    
+CREATE TABLE METODOS_PAGOS(
+ID int not null,
+VALOR varchar(50)not null,
+PRIMARY KEY(ID);
+)
+    

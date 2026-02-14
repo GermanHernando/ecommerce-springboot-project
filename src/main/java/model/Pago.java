@@ -6,13 +6,12 @@ import enums.MetodoPago;
 
 public class Pago {
 
-	private static int idPago;
+	private Integer id;
 	private LocalDateTime fecha;
 	private double monto;
 	private MetodoPago metodo;
 	
 	public Pago(LocalDateTime fecha, double monto) {
-		idPago++;
 		this.fecha = fecha;
 		this.monto = monto;
 		
