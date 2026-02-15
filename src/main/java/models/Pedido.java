@@ -1,23 +1,40 @@
-package model;
+package models;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 import enums.Estado;
 import interfaces.Calculable;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name="PEDIDOS")
 public class Pedido implements Calculable{
 	
-	private Integer id;
+	@Id
+	@Column(name="ID")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	@Column(name = "FECHA")
 	private LocalDateTime fecha;
+	@Column(name = "TOTAL")
 	private double total;
+	@Column(name = "COMPRADOR_ID")
 	private Usuario usuario;
-	private ItemCarrito[]itemsPedido;
+	//TODO Chequear como queda la lista en DB
+	private ItemPedido[]itemsPedido;
+	@Column(name = "ESTADO")
 	private Estado estado;
+	@Column(name = "PAGO_ID")
 	private Pago pago;
 	
 		
-	public Pedido(Usuario usuario,List<ItemCarrito> itemsCarrito, double total) {
+	public Pedido(Usuario usuario,List<ItemPedido> itemsCarrito, double total) {
 		this.fecha = LocalDateTime.now();
 		this.total = total;
 		this.usuario = usuario;
@@ -26,10 +43,11 @@ public class Pedido implements Calculable{
 		this.agregarPedidoComprador(usuario);
 	}
 	
-	private void llenarLista(List<ItemCarrito>lista) {
-		this.itemsPedido = new ItemCarrito[lista.size()];
+	private void llenarLista(List<ItemPedido>lista) {
+		this.itemsPedido = new ItemPedido[lista.size()];
 		for (int i = 0; i < itemsPedido.length; i++) {
 			itemsPedido[i]= lista.get(i);
+			itemsPedido[i].asignarPedido(this.id);
 		}
 		
 	}
@@ -46,7 +64,7 @@ public class Pedido implements Calculable{
 	}
 
 	public Pago generarPago() {
-		this.pago = new Pago(this.fecha,calcularTotalConImpuestos());
+		this.pago = new Pago(this.id,this.fecha,calcularTotalConImpuestos());
 		return pago;
 	}
 	
@@ -57,8 +75,9 @@ public class Pedido implements Calculable{
 	}
 	
 	public void cancelarPedidoComprador() {
-		if(this.usuario instanceof Comprador && this.estado.equals(Estado.CANCELADO)) {
+		if(this.usuario instanceof Comprador) {
 			((Comprador)this.usuario).eliminarPedido(this);
+			this.estado = Estado.CANCELADO;
 		}
 	}
 	

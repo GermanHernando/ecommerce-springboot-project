@@ -1,16 +1,32 @@
-package model;
+package models;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "PRODUCTOS")
 public abstract class Producto {
 
-	private Integer id;
+	@Id
+	@Column(name = "ID")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	@Column(name = "NOMBRE")
 	private String nombre;
+	@Column(name = "MARCA")
 	private String marca;
+	@Column(name = "COLOR")
 	private String color;
+	@Column(name = "PRECIO")
 	private double precio;
+	@Column(name = "CANTIDAD")
 	private int cantidad;
 	
 	public Producto(String nombre, String marca, String color, double precio, int cantidad) {
-		id++;
 		this.nombre = nombre;
 		this.marca = marca;
 		this.color = color;

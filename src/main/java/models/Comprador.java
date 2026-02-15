@@ -1,16 +1,34 @@
-package model;
+package models;
 
 import java.util.HashSet;
 import java.util.Set;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "COMPRADORES")
 public class Comprador extends Usuario {
 
+	@Id
+	@Column(name = "ID")
+	//TODO Ver si necesita hacerse alguna implementación más con el ID
+	private Long id;
+	@Column(name = "NOMBRE")
 	private String nombre;
+	@Column(name = "APELLIDO")
 	private String apellido;
+	@Column(name = "TELEFONO")
+	//TODO Ver porque en la tabla quedó como VARCHAR y acá está como INT el Telefono
 	private int telefono;
+	@Column(name = "DIRECCION")
 	private String direccion;
+	@Column(name = "CODIGO_POSTAL")
 	private int codigoPostal;
 	//private Carrito carrito; El carrito puede ser usado como una instancia pero el carrito, queda en caché, no se modela en la DB
+	//TODO Chequear como queda la lista en DB
 	private Set<Pedido>pedidos;
 	
 	public Comprador(String email, String contrasenia, String nombre, String apellido, int telefono, String direccion,

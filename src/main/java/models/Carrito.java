@@ -1,26 +1,26 @@
-package model;
+package models;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Carrito {
 
-	private List<ItemCarrito>itemsCarrito;
+	private List<ItemPedido>itemsCarrito;
 	private Usuario usuario;
 	
 	public Carrito(Usuario u) {
 		this.usuario = u;
-		this.itemsCarrito = new ArrayList<ItemCarrito>();
+		this.itemsCarrito = new ArrayList<ItemPedido>();
 	}
 	
 	
 	public void agregarItem(Producto p,int cantidad) {
 		if(p!=null) {
-			ItemCarrito itemBuscado = this.buscarItemCarrito(p);
+			ItemPedido itemBuscado = this.buscarItemCarrito(p);
 			if (itemBuscado!=null) {
 				itemBuscado.incrementarCantidad(cantidad);
 			}else {
-				this.itemsCarrito.add(new ItemCarrito(p,p.getPrecio(),cantidad));
+				this.itemsCarrito.add(new ItemPedido(p,p.getPrecio(),cantidad));
 			}
 		}
 	}
@@ -28,7 +28,7 @@ public class Carrito {
 	
 	public void eliminarItem(Producto p,int cantidad) {
 		if(p!=null) {
-			ItemCarrito itemBuscado = this.buscarItemCarrito(p);
+			ItemPedido itemBuscado = this.buscarItemCarrito(p);
 			if (itemBuscado!=null && itemBuscado.quedaCantidad(cantidad)) {
 				itemBuscado.disminuirCantidad(cantidad);
 			}else {
@@ -38,7 +38,7 @@ public class Carrito {
 	}
 	
 
-	private ItemCarrito buscarItemCarrito(Producto p) {
+	private ItemPedido buscarItemCarrito(Producto p) {
 		int index = 0;
 		while (index<itemsCarrito.size() && itemsCarrito.get(index).mismoNombre(p.getNombre())) {
 			index++;
@@ -47,7 +47,7 @@ public class Carrito {
 	}
 	
 	public void listarItems() {
-		for (ItemCarrito itemCarrito : itemsCarrito) {
+		for (ItemPedido itemCarrito : itemsCarrito) {
 			System.out.println(itemCarrito.datoItem());
 		}
 	}
@@ -56,7 +56,7 @@ public class Carrito {
 	//Considerar private si es que sólo se ve el total en el pedido y no en una vista previa del carrito
 	public double calcularSubTotalCarrito() {
 		double acumulado = 0;
-		for (ItemCarrito itemCarrito : itemsCarrito) {
+		for (ItemPedido itemCarrito : itemsCarrito) {
 			acumulado += itemCarrito.calcularSubTotal();
 		}
 		return acumulado;

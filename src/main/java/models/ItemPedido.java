@@ -1,13 +1,30 @@
-package model;
+package models;
 
-public class ItemCarrito {
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
-	private Integer id;
+@Entity
+@Table(name = "ITEMS_PEDIDO")
+public class ItemPedido {
+
+	@Id
+	@Column(name = "ID")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	@Column(name="PEDIDO_ID")
+	private Long idPedido;
+	@Column(name = "PRODUCTO_ID")
 	private Producto producto;
+	@Column(name = "PRECIO")
 	private double precio;
+	@Column(name = "CANTIDAD")
 	private int cantidad;
 	
-	public ItemCarrito(Producto producto, double precio, int cantidad) {
+	public ItemPedido(Producto producto, double precio, int cantidad) {
 		this.producto = producto;
 		this.precio = precio;
 		this.cantidad = cantidad;
@@ -35,6 +52,9 @@ public class ItemCarrito {
 		return cantidad*precio;
 	}
 	
+	public void asignarPedido(Long idPedido) {
+		this.idPedido = idPedido;
+	}
 	
 	public String datoItem() {
 		return "Nombre: "+this.producto.getNombre()+", Cantidad: "+this.cantidad+", Precio: $"+this.precio;
