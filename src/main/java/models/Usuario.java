@@ -1,16 +1,14 @@
 package models;
 
-import java.util.regex.Pattern;
 
+import java.util.regex.Pattern;
 import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.MappedSuperclass;
 
-@Entity
-@Table(name="USUARIOS")
+@MappedSuperclass
 public abstract class Usuario {
 
 	private static final String MSJ_CONTRASENIA_INVALIDA = "La contrasenia no puede ser nula o vacía.";

@@ -7,6 +7,8 @@ import enums.Estado;
 import interfaces.Calculable;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -29,6 +31,7 @@ public class Pedido implements Calculable{
 	//TODO Chequear como queda la lista en DB
 	private ItemPedido[]itemsPedido;
 	@Column(name = "ESTADO")
+	@Enumerated(EnumType.STRING)
 	private Estado estado;
 	@Column(name = "PAGO_ID")
 	private Pago pago;

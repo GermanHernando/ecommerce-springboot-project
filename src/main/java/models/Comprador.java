@@ -5,17 +5,13 @@ import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "COMPRADORES")
 public class Comprador extends Usuario {
 
-	@Id
-	@Column(name = "ID")
-	//TODO Ver si necesita hacerse alguna implementación más con el ID
-	private Long id;
+	
 	@Column(name = "NOMBRE")
 	private String nombre;
 	@Column(name = "APELLIDO")

@@ -2,17 +2,13 @@ package models;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "CELULARES")
 public class Celular extends Producto {
 
-	@Id
-	@Column(name = "ID")
-	//TODO Chequear si necesita el generated value para el ID
-	private Long id;
+
 	@Column(name = "TAMANIO")
 	private int tamanio;
 	@Column(name = "RESOLUCION_PANTALLA")
