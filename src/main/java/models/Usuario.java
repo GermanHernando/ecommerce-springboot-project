@@ -21,6 +21,9 @@ public abstract class Usuario {
 	@Column(name="CONTRASENIA")
 	private String contrasenia;
 	
+	//Sólo para Hibernate
+	Usuario(){}
+	
 	public Usuario(String email, String contrasenia) {
 		this.email = email;
 		this.setContrasenia(contrasenia);

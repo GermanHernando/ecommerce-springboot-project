@@ -3,8 +3,11 @@ package models;
 import java.util.HashSet;
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -24,8 +27,12 @@ public class Comprador extends Usuario {
 	@Column(name = "CODIGO_POSTAL")
 	private int codigoPostal;
 	//private Carrito carrito; El carrito puede ser usado como una instancia pero el carrito, queda en caché, no se modela en la DB
-	//TODO Chequear como queda la lista en DB
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "ID", referencedColumnName = "ID" )
 	private Set<Pedido>pedidos;
+	
+	
+	public Comprador() {}
 	
 	public Comprador(String email, String contrasenia, String nombre, String apellido, int telefono, String direccion,
 			int codigoPostal) {

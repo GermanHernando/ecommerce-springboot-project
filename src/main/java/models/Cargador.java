@@ -13,6 +13,8 @@ public class Cargador extends Producto {
 	@Column(name = "CARGA_RAPIDA")
 	private boolean cargaRapida;
 	
+	Cargador(){}
+	
 	public Cargador(String nombre, String marca, String color, double precio, int cantidad, int wats,
 			boolean cargaRapida) {
 		super(nombre, marca, color, precio, cantidad);

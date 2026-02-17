@@ -24,6 +24,8 @@ public abstract class Producto {
 	@Column(name = "CANTIDAD")
 	private int cantidad;
 	
+	Producto(){}
+	
 	public Producto(String nombre, String marca, String color, double precio, int cantidad) {
 		this.nombre = nombre;
 		this.marca = marca;

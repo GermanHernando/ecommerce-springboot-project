@@ -20,6 +20,7 @@ public class Celular extends Producto {
 	@Column(name = "ALMACENAMIENTO")
 	private int almacenamiento;
 	
+	Celular(){}
 	
 	public Celular(String nombre, String marca, String color, double precio, int cantidad, int tamanio,
 			String resolucionPantalla, String resolucionCamara, int ram, int almacenamiento) {

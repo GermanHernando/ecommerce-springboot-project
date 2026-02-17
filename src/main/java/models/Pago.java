@@ -34,6 +34,8 @@ public class Pago {
 	@Column(name = "PEDIDO_ID")
 	private Long idPedido;
 	
+	Pago(){}
+	
 	public Pago(Long idPedido,LocalDateTime fecha, double monto) {
 		this.fecha = fecha;
 		this.monto = monto;

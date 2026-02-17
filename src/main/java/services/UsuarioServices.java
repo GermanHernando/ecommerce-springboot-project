@@ -4,6 +4,10 @@ import models.Usuario;
 
 public interface UsuarioServices {
 
-	void guardar(Usuario usuario);
+	public Usuario obtenerId(Long id);
+	
+	public void guardarUsuario(Usuario usuario);
+	
+	public boolean existeUsuario(String email);
 	
 }

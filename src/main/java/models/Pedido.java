@@ -26,6 +26,8 @@ public class Pedido implements Calculable{
 	private LocalDateTime fecha;
 	@Column(name = "TOTAL")
 	private double total;
+	/*TODO Quizas convenga que sea directo un comprador porque los pedidos pueden llegar 
+	a tener comprador y vendedor pero un Usuario no puede ser ambos a la vez*/
 	@Column(name = "COMPRADOR_ID")
 	private Usuario usuario;
 	//TODO Chequear como queda la lista en DB
@@ -36,7 +38,8 @@ public class Pedido implements Calculable{
 	@Column(name = "PAGO_ID")
 	private Pago pago;
 	
-		
+	Pedido(){}
+	
 	public Pedido(Usuario usuario,List<ItemPedido> itemsCarrito, double total) {
 		this.fecha = LocalDateTime.now();
 		this.total = total;
@@ -50,7 +53,7 @@ public class Pedido implements Calculable{
 		this.itemsPedido = new ItemPedido[lista.size()];
 		for (int i = 0; i < itemsPedido.length; i++) {
 			itemsPedido[i]= lista.get(i);
-			itemsPedido[i].asignarPedido(this.id);
+			itemsPedido[i].asignarPedido(this);
 		}
 		
 	}

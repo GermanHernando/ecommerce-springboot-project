@@ -15,14 +15,17 @@ public class ItemPedido {
 	@Column(name = "ID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	//TODO Modificar en DB para que en vez de un ID, agarre un PEDIDO, ver
 	@Column(name="PEDIDO_ID")
-	private Long idPedido;
+	private Pedido pedido;
 	@Column(name = "PRODUCTO_ID")
 	private Producto producto;
-	@Column(name = "PRECIO")
+	@Column(name = "PRECIO_UNITARIO")
 	private double precio;
 	@Column(name = "CANTIDAD")
 	private int cantidad;
+	
+	public ItemPedido() {}
 	
 	public ItemPedido(Producto producto, double precio, int cantidad) {
 		this.producto = producto;
@@ -52,8 +55,8 @@ public class ItemPedido {
 		return cantidad*precio;
 	}
 	
-	public void asignarPedido(Long idPedido) {
-		this.idPedido = idPedido;
+	public void asignarPedido(Pedido pedido) {
+		this.pedido = pedido;
 	}
 	
 	public String datoItem() {
