@@ -10,7 +10,7 @@ import models.Producto;
 @Repository
 public interface ProductoRepository extends JpaRepository<Producto, Long> {
 
-	public List<Producto> findByFirstNameIgnoreCase(String nombre);
+	public List<Producto> findByNombre(String nombre);
 	
 	
 }

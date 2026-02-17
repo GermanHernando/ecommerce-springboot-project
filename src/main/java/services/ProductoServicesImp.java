@@ -30,7 +30,7 @@ public class ProductoServicesImp implements ProductoServices {
 	public boolean existeProducto(String nombre) {
 		boolean existe = false;
 		if (nombre != null) {
-			List<Producto> productos = this.repository.findByFirstNameIgnoreCase(nombre);
+			List<Producto> productos = this.repository.findByNombre(nombre);
 			existe = !productos.isEmpty();
 		}
 		return existe;

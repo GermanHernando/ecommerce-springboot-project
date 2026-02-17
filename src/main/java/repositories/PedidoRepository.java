@@ -11,7 +11,7 @@ import models.Pedido;
 @Repository
 public interface PedidoRepository extends JpaRepository<Pedido, Long> {
 
-	//TODO Verificar por firma del metodo
-	public List<Pedido> findByDate(LocalDateTime fecha);
+
+	public List<Pedido> findByFecha(LocalDateTime fecha);
 	
 }

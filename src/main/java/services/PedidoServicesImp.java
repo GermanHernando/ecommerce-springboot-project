@@ -32,7 +32,7 @@ public class PedidoServicesImp implements PedidoServices {
 	public boolean existePedido(LocalDateTime fecha) {
 		boolean existe = false;
 		if (fecha != null) {
-			List<Pedido> pedidos = this.repository.findByDate(fecha);
+			List<Pedido> pedidos = this.repository.findByFecha(fecha);
 			existe = !pedidos.isEmpty();
 		}
 		return existe;
