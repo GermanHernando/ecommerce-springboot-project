@@ -9,7 +9,7 @@ CREATE TABLE COMPRADORES(
 ID bigint not null,
 NOMBRE varchar(60)not null,
 APELLIDO varchar(60)not null,
-TELEFONO varchar(20) not null,
+TELEFONO int not null,
 DIRECCION varchar(90)not null,
 CODIGO_POSTAL varchar(10) not null,
 PRIMARY KEY(ID)

@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Carrito {
 
+	private static final String MSJ_CARRITO_VACIO = "No puede generarse el pedido sin productos.";
 	private List<ItemPedido>itemsCarrito;
 	private Usuario usuario;
 	
@@ -64,6 +65,9 @@ public class Carrito {
 	
 	
 	public Pedido generarPedido() {
+		if (this.itemsCarrito.isEmpty()) {
+			throw new RuntimeException(MSJ_CARRITO_VACIO);
+		}
 		Pedido p = new Pedido(this.usuario,itemsCarrito,calcularSubTotalCarrito());
 		itemsCarrito.clear();
 		return p;

@@ -11,7 +11,9 @@ import jakarta.persistence.MappedSuperclass;
 @MappedSuperclass
 public abstract class Usuario {
 
-	private static final String MSJ_CONTRASENIA_INVALIDA = "La contrasenia no puede ser nula o vacía.";
+	private static final String MSJ_CONTRASENIA_INVALIDA = "La contrasenia no puede ser nula o vacia.";
+	private static final String MSJ_ERROR_EMAIL = "El email no puede ser nulo o estar vacio";
+	private static final String MSJ_ERROR_VALIDACION_EMAIL = "Introduzca un email valido";
 	@Id
 	@Column(name="ID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,18 +23,22 @@ public abstract class Usuario {
 	@Column(name="CONTRASENIA")
 	private String contrasenia;
 	
-	//Sólo para Hibernate
 	Usuario(){}
 	
 	public Usuario(String email, String contrasenia) {
-		this.email = email;
+		this.setEmail(email);
 		this.setContrasenia(contrasenia);
 	}
 
-	public void setEmail(String email) {
-		if(validarEmail(email)) {
-			this.email = email;
+	
+	public void setEmail(String email){
+		if(email==null || email.isBlank()) {
+			throw new IllegalArgumentException(MSJ_ERROR_EMAIL);
 		}
+		if(!validarEmail(email)) {
+			throw new IllegalArgumentException(MSJ_ERROR_VALIDACION_EMAIL);
+		}
+		this.email = email;
 	}
 	
 	private  boolean validarEmail(String email) {

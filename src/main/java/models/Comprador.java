@@ -20,7 +20,6 @@ public class Comprador extends Usuario {
 	@Column(name = "APELLIDO")
 	private String apellido;
 	@Column(name = "TELEFONO")
-	//TODO Ver porque en la tabla quedó como VARCHAR y acá está como INT el Telefono
 	private int telefono;
 	@Column(name = "DIRECCION")
 	private String direccion;

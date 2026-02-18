@@ -18,6 +18,7 @@ import jakarta.persistence.Table;
 @Table(name="PEDIDOS")
 public class Pedido implements Calculable{
 	
+	private static final String MSJ_ERROR_USUARIO = "No se encontro el usuario, debe estar logeado para continuar con el pedido";
 	@Id
 	@Column(name="ID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,11 +43,27 @@ public class Pedido implements Calculable{
 	
 	public Pedido(Usuario usuario,List<ItemPedido> itemsCarrito, double total) {
 		this.fecha = LocalDateTime.now();
-		this.total = total;
-		this.usuario = usuario;
+		this.setTotal(total);
+		this.setUsuario(usuario);
 		this.llenarLista(itemsCarrito);
 		this.estado = Estado.CREADO;
 		this.agregarPedidoComprador(usuario);
+	}
+
+	private void setUsuario(Usuario usuario) {
+		if(usuario==null) {
+			throw new IllegalArgumentException(MSJ_ERROR_USUARIO);
+		}
+		this.usuario = usuario;
+	}
+
+	/*FIXME Puede que no sea necesario porque se valida en carrito que 
+	se genere el pedido, solo si tiene productos*/
+	private void setTotal(double total) {
+		if (total==0) {
+			throw new IllegalArgumentException();
+		}
+		this.total = total;
 	}
 	
 	private void llenarLista(List<ItemPedido>lista) {
