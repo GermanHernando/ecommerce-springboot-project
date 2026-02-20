@@ -15,7 +15,6 @@ public class ItemPedido {
 	@Column(name = "ID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	//TODO Modificar en DB para que en vez de un ID, agarre un PEDIDO, ver
 	@Column(name="PEDIDO_ID")
 	private Pedido pedido;
 	@Column(name = "PRODUCTO_ID")

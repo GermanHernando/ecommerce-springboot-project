@@ -5,6 +5,7 @@ import java.util.List;
 
 import enums.Estado;
 import interfaces.Calculable;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -12,6 +13,8 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -19,6 +22,7 @@ import jakarta.persistence.Table;
 public class Pedido implements Calculable{
 	
 	private static final String MSJ_ERROR_USUARIO = "No se encontro el usuario, debe estar logeado para continuar con el pedido";
+	private static final String MSJ_ERROR_TOTAL = "El total no puede ser igual o menor a 0"; 
 	@Id
 	@Column(name="ID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,12 +31,11 @@ public class Pedido implements Calculable{
 	private LocalDateTime fecha;
 	@Column(name = "TOTAL")
 	private double total;
-	/*TODO Quizas convenga que sea directo un comprador porque los pedidos pueden llegar 
-	a tener comprador y vendedor pero un Usuario no puede ser ambos a la vez*/
 	@Column(name = "COMPRADOR_ID")
-	private Usuario usuario;
-	//TODO Chequear como queda la lista en DB
-	private ItemPedido[]itemsPedido;
+	private Comprador comprador;
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "ID", referencedColumnName = "ID" )
+	private List<ItemPedido>itemsPedido;
 	@Column(name = "ESTADO")
 	@Enumerated(EnumType.STRING)
 	private Estado estado;
@@ -41,38 +44,34 @@ public class Pedido implements Calculable{
 	
 	Pedido(){}
 	
-	public Pedido(Usuario usuario,List<ItemPedido> itemsCarrito, double total) {
+	public Pedido(Comprador comprador,List<ItemPedido> itemsCarrito, double total) {
 		this.fecha = LocalDateTime.now();
 		this.setTotal(total);
-		this.setUsuario(usuario);
+		this.setComprador(comprador);
 		this.llenarLista(itemsCarrito);
 		this.estado = Estado.CREADO;
-		this.agregarPedidoComprador(usuario);
+		this.agregarPedidoAComprador(comprador);
 	}
 
-	private void setUsuario(Usuario usuario) {
-		if(usuario==null) {
+	private void setComprador(Comprador comprador) {
+		if(comprador==null) {
 			throw new IllegalArgumentException(MSJ_ERROR_USUARIO);
 		}
-		this.usuario = usuario;
+		this.comprador = comprador;
 	}
 
-	/*FIXME Puede que no sea necesario porque se valida en carrito que 
-	se genere el pedido, solo si tiene productos*/
+	
 	private void setTotal(double total) {
-		if (total==0) {
-			throw new IllegalArgumentException();
+		if (total<=0) {
+			throw new IllegalArgumentException(MSJ_ERROR_TOTAL);
 		}
 		this.total = total;
 	}
 	
 	private void llenarLista(List<ItemPedido>lista) {
-		this.itemsPedido = new ItemPedido[lista.size()];
-		for (int i = 0; i < itemsPedido.length; i++) {
-			itemsPedido[i]= lista.get(i);
-			itemsPedido[i].asignarPedido(this);
+		if(!lista.isEmpty()) {
+			this.itemsPedido = lista;
 		}
-		
 	}
 	
 	@Override
@@ -91,17 +90,15 @@ public class Pedido implements Calculable{
 		return pago;
 	}
 	
-	private void agregarPedidoComprador(Usuario u) {
-		if(u instanceof Comprador) {
-			((Comprador)u).agregarPedido(this);
+	private void agregarPedidoAComprador(Comprador comprador) {
+		if(comprador!=null) {
+			comprador.agregarPedido(this);
 		}
 	}
 	
 	public void cancelarPedidoComprador() {
-		if(this.usuario instanceof Comprador) {
-			((Comprador)this.usuario).eliminarPedido(this);
+			this.comprador.eliminarPedido(this);
 			this.estado = Estado.CANCELADO;
-		}
 	}
 	
 

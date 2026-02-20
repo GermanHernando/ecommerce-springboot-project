@@ -1,7 +1,5 @@
 package services;
 
-import java.time.LocalDateTime;
-
 import models.Pedido;
 
 public interface PedidoServices {
@@ -10,7 +8,6 @@ public interface PedidoServices {
 
 	public void guardarPedido(Pedido pedido);
 
-	//TODO Verificar si esta bien con LocalDateTime, se vuelve menos exacta la busqueda?
-	public boolean existePedido(LocalDateTime fecha);
-
+	//Se puede hacer algún método con ESTADO
+	
 }

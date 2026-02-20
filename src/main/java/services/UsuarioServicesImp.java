@@ -18,7 +18,7 @@ public class UsuarioServicesImp implements UsuarioServices {
 	@Override
 	public Usuario obtenerId(Long id) {
 		Optional<Usuario> usuario = this.repository.findById(id);
-		return usuario.get();
+		return usuario.isPresent()?usuario.get():null;
 	}
 
 	@Override

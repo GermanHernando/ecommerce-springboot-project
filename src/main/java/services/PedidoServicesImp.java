@@ -28,13 +28,5 @@ public class PedidoServicesImp implements PedidoServices {
 		this.repository.save(pedido);
 	}
 
-	@Override
-	public boolean existePedido(LocalDateTime fecha) {
-		boolean existe = false;
-		if (fecha != null) {
-			List<Pedido> pedidos = this.repository.findByFecha(fecha);
-			existe = !pedidos.isEmpty();
-		}
-		return existe;
-	}
+	
 }
