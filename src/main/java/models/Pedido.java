@@ -21,7 +21,7 @@ import jakarta.persistence.Table;
 @Table(name="PEDIDOS")
 public class Pedido implements Calculable{
 	
-	private static final String MSJ_ERROR_USUARIO = "No se encontro el usuario, debe estar logeado para continuar con el pedido";
+	private static final String MSJ_ERROR_COMPRADOR= "No se encontro el usuario, debe estar logeado para continuar con el pedido";
 	private static final String MSJ_ERROR_TOTAL = "El total no puede ser igual o menor a 0"; 
 	@Id
 	@Column(name="ID")
@@ -55,7 +55,7 @@ public class Pedido implements Calculable{
 
 	private void setComprador(Comprador comprador) {
 		if(comprador==null) {
-			throw new IllegalArgumentException(MSJ_ERROR_USUARIO);
+			throw new IllegalArgumentException(MSJ_ERROR_COMPRADOR);
 		}
 		this.comprador = comprador;
 	}
@@ -71,6 +71,9 @@ public class Pedido implements Calculable{
 	private void llenarLista(List<ItemPedido>lista) {
 		if(!lista.isEmpty()) {
 			this.itemsPedido = lista;
+			for (ItemPedido itemPedido : itemsPedido) {
+				itemPedido.asignarPedido(this);
+			}
 		}
 	}
 	

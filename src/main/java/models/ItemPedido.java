@@ -11,6 +11,9 @@ import jakarta.persistence.Table;
 @Table(name = "ITEMS_PEDIDO")
 public class ItemPedido {
 
+	private static final String MSJ_ERROR_PRODUCTO_NULO = "El producto no puede ser nulo";
+	private static final String MSJ_ERROR_PRECIO = "El precio no puede ser menor o igual a 0(cero)";
+	private static final String MSJ_ERROR_CANTIDAD = "La cantidad no puede ser menor o igual a 0(cero)";
 	@Id
 	@Column(name = "ID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,11 +30,33 @@ public class ItemPedido {
 	public ItemPedido() {}
 	
 	public ItemPedido(Producto producto, double precio, int cantidad) {
-		this.producto = producto;
-		this.precio = precio;
-		this.cantidad = cantidad;
+		this.setProducto(producto);
+		this.setPrecio(precio);
+		this.setCantidad(cantidad);
 	}
 	
+	
+	public void setProducto(Producto producto) {
+		if (producto == null) {
+			throw new IllegalArgumentException(MSJ_ERROR_PRODUCTO_NULO);
+		}
+		this.producto = producto;
+	}
+
+	public void setPrecio(double precio) {
+		if (precio <= 0) {
+			throw new IllegalArgumentException(MSJ_ERROR_PRECIO);
+		}
+		this.precio = precio;
+	}
+
+	public void setCantidad(int cantidad) {
+		if (cantidad <= 0) {
+			throw new IllegalArgumentException(MSJ_ERROR_CANTIDAD);
+		}
+		this.cantidad = cantidad;
+	}
+
 	public void incrementarCantidad(int cantidad) {
 		this.cantidad+=cantidad;
 	}
