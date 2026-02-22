@@ -19,8 +19,7 @@ public abstract class Usuario {
 	private static final String MSJ_ERROR_EMAIL_ESPACIOS = "El email no puede contener espacios";
 	private static final String MSJ_ERROR_VALIDACION_EMAIL = "Introduzca un email valido";
 	private static final String MSJ_CONTRASENIA_INVALIDA = "La contrasenia no puede ser nula o vacia";
-	private static final String MSJ_ERROR_MAX_CONTRASENIA = "La contrasenia es demasiado larga";
-	private static final String MSJ_ERROR_MIN_CONTRASENIA = "La contrasenia es demasiado corta";
+	private static final String MSJ_ERROR_LENGHT_CONTRASENIA = "La contrasenia debe tener entre 8 y 64 caracteres";
 	private static final String MSJ_ERROR_CONTRASENIA_MAYUS = "Debe contener al menos una mayuscula";
 	private static final String MSJ_ERROR_CONTRASENIA_MINUS = "Debe contener al menos una minuscula";
 	private static final String MSJ_ERROR_CONTRASENIA_NUMBER = "Debe contener al menos un numero";
@@ -67,11 +66,8 @@ public abstract class Usuario {
 		if (contrasenia == null || contrasenia.isBlank()) {
 			throw new IllegalArgumentException(MSJ_CONTRASENIA_INVALIDA);
 		}
-		if (contrasenia.length()<MIN_TAMANIO_CONTRASENIA) {
-			throw new IllegalArgumentException(MSJ_ERROR_MIN_CONTRASENIA);
-		}
-		if (contrasenia.length()>MAX_TAMANIO_CONTRASENIA) {
-			throw new IllegalArgumentException(MSJ_ERROR_MAX_CONTRASENIA);
+		if (contrasenia.length()<MIN_TAMANIO_CONTRASENIA || contrasenia.length()>MAX_TAMANIO_CONTRASENIA) {
+			throw new IllegalArgumentException(MSJ_ERROR_LENGHT_CONTRASENIA);
 		}
 		if (contrasenia.contains(" ")) {
 			throw new IllegalArgumentException(MSJ_ERROR_CONTRASENIA_SPACES);
@@ -106,7 +102,17 @@ public abstract class Usuario {
 	private boolean validarEspecialCharacterContrasenia(String contrasenia) {
 		return REGEX_CONTRASENIA_CHARACTER_ESP.matcher(contrasenia).find();
 	}
+
+	public boolean tieneEmail() {
+		return this.email!=null;
+	}
+
+	public boolean tieneContrasenia() {
+		return this.contrasenia!=null;
+	}
 		
+	
+	
 		
 		
 		
