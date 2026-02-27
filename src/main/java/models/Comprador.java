@@ -3,6 +3,7 @@ package models;
 import java.util.HashSet;
 import java.util.Set;
 
+import exceptions.QuantityCharactersException;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -14,18 +15,19 @@ import jakarta.persistence.Table;
 @Table(name = "COMPRADORES")
 public class Comprador extends Usuario {
 
-	private static final String MSJ_ERROR_LARGO_DIRECCION = "La direccion debe tener entre 8 y 100 caracteres";
 	private static final String MSJ_ERROR_NOMBRE = "El nombre no puede ser vacío o contener caracteres especiales";
 	private static final String MSJ_ERROR_APELLIDO = "El apellido no puede ser vacío o contener caracteres especiales";
 	private static final String MSJ_ERROR_DIRECCION_VACIA = "La direccion no puede estar vacia";
-	private static final int MAX_CARACTERES_DIRECCION = 100;
-	private static final int MIN_CARACTERES_DIRECCION = 8;
-	private static final String MSJ_ERROR_TELEFONO = "El teléfono no puede ser 0(cero) y no puede ser un número menor a 8 ni mayor a 15 dígitos";
-	private static final int MAX_CANT_CARACTERES_TELEFONO = 15;
-	private static final int MIN_CANT_CARACTERES_TELEFONO = 8;
+	private static final int MAX_CHARACTER_DIRECCION = 100;
+	private static final int MIN_CHARACTER_DIRECCION = 8;
+	private static final String MSJ_ERROR_TELEFONO_VACIO = "El teléfono no puede estar vacio";
+	private static final int MAX_CANT_CHARACTER_TELEFONO = 15;
+	private static final int MIN_CANT_CHARACTER_TELEFONO = 8;
 	private static final String REGEX_CODIGO_POSTAL = "^[A-Z]?[0-9]{4}[A-Z]{0,3}$";
 	private static final String MSJ_ERROR_CODIGO_POSTAL_INVALIDO = "Codigo postal argentino invalido";
 	private static final String MSJ_ERROR_CODIGO_POSTAL_VACIO = "Codigo postal no puede estar vacio";
+	private static final int MIN_CANT_CHARACTER_NOMBRE_APELLIDO = 4;
+	private static final int MAX_CANT_CHARACTER_NOMBRE_APELLIDO = 40;
 	@Column(name = "NOMBRE")
 	private String nombre;
 	@Column(name = "APELLIDO")
@@ -42,17 +44,16 @@ public class Comprador extends Usuario {
 	@JoinColumn(name = "ID", referencedColumnName = "ID")
 	private Set<Pedido> pedidos;
 
-	public Comprador() {
-	}
+	public Comprador() {}
 
 	public Comprador(String email, String contrasenia, String nombre, String apellido, int telefono, String direccion,
-			String codigoPostal) {
+			String codigoPostal)throws QuantityCharactersException {
 		super(email, contrasenia);
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.telefono = telefono;
-		this.direccion = direccion;
-		this.codigoPostal = codigoPostal;
+		this.setNombre(nombre);
+		this.setApellido(apellido);
+		this.setTelefono(telefono);
+		this.setDireccion(direccion);
+		this.setCodigoPostal(codigoPostal);
 		// this.carrito = new Carrito(this);
 		this.pedidos = new HashSet<Pedido>();
 	}
@@ -65,35 +66,46 @@ public class Comprador extends Usuario {
 	// this.carrito.eliminarItem(p, cantidad);
 	// }
 
-	public void setNombre(String nombre) {
+	public void setNombre(String nombre)throws QuantityCharactersException{
 		if (nombre == null || nombre.isBlank()) {
 			throw new IllegalArgumentException(MSJ_ERROR_NOMBRE);
 		}
+		if (nombre.length()<MIN_CANT_CHARACTER_NOMBRE_APELLIDO || nombre.length()>MAX_CANT_CHARACTER_NOMBRE_APELLIDO) {
+			throw new QuantityCharactersException(MIN_CANT_CHARACTER_NOMBRE_APELLIDO, MAX_CANT_CHARACTER_NOMBRE_APELLIDO);
+		}
+		
 		this.nombre = nombre;
 	}
 
-	public void setApellido(String apellido) {
+	public void setApellido(String apellido)throws QuantityCharactersException {
 		if (apellido == null || apellido.isBlank()) {
 			throw new IllegalArgumentException(MSJ_ERROR_APELLIDO);
 		}
+		if (apellido.length()<MIN_CANT_CHARACTER_NOMBRE_APELLIDO || apellido.length()>MAX_CANT_CHARACTER_NOMBRE_APELLIDO) {
+			throw new QuantityCharactersException(MIN_CANT_CHARACTER_NOMBRE_APELLIDO, MAX_CANT_CHARACTER_NOMBRE_APELLIDO);
+		}
+		
 		this.apellido = apellido;
 	}
 
-	public void setTelefono(int telefono) {
-		int cantCaracteres = String.valueOf(telefono).length();
-		if (telefono == 0 || cantCaracteres < MIN_CANT_CARACTERES_TELEFONO
-				|| cantCaracteres > MAX_CANT_CARACTERES_TELEFONO) {
-			throw new IllegalArgumentException(MSJ_ERROR_TELEFONO);
+	public void setTelefono(int telefono)throws QuantityCharactersException {
+		int cantCaracteres = 0;
+		if (telefono == 0) {
+			throw new IllegalArgumentException(MSJ_ERROR_TELEFONO_VACIO);
+		}
+		cantCaracteres = String.valueOf(telefono).length();
+		if (cantCaracteres < MIN_CANT_CHARACTER_TELEFONO|| cantCaracteres > MAX_CANT_CHARACTER_TELEFONO) {
+			throw new QuantityCharactersException(MIN_CANT_CHARACTER_TELEFONO,MAX_CANT_CHARACTER_TELEFONO);
 		}
 		this.telefono = telefono;
 	}
 
-	public void setDireccion(String direccion) {
+	public void setDireccion(String direccion)throws QuantityCharactersException {
 		if (direccion == null || direccion.isBlank()) {
 			throw new IllegalArgumentException(MSJ_ERROR_DIRECCION_VACIA);
 		}
-		if (direccion.length() < MIN_CARACTERES_DIRECCION || direccion.length() > MAX_CARACTERES_DIRECCION) {
-			throw new IllegalArgumentException(MSJ_ERROR_LARGO_DIRECCION);
+		if (direccion.length() < MIN_CHARACTER_DIRECCION || direccion.length() > MAX_CHARACTER_DIRECCION) {
+			throw new QuantityCharactersException(MIN_CHARACTER_DIRECCION,MAX_CHARACTER_DIRECCION);
 		}
 		this.direccion = direccion;
 	}
@@ -102,9 +114,10 @@ public class Comprador extends Usuario {
 		 if (codigoPostal == null) {
 		       throw new IllegalArgumentException(MSJ_ERROR_CODIGO_POSTAL_VACIO);
 	    }
-	    if (!codigoPostal.matches(REGEX_CODIGO_POSTAL)) {
+		 if (!codigoPostal.matches(REGEX_CODIGO_POSTAL)) {
 	    	throw new IllegalArgumentException(MSJ_ERROR_CODIGO_POSTAL_INVALIDO);
-		   }
+		}
+	   
 	    this.codigoPostal = codigoPostal;
 	}
 

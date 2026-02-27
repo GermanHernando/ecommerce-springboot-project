@@ -1,5 +1,6 @@
 package models;
 
+import exceptions.QuantityCharactersException;
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,6 +15,10 @@ public abstract class Producto {
 	private static final String MSJ_ERROR_COLOR = "El color no puede ser nulo o estar vacio";
 	private static final String MSJ_ERROR_PRECIO = "El precio no puede ser menor o igual a 0(cero)";
 	private static final String MSJ_ERROR_CANTIDAD = "La cantidad no puede ser menor o igual a 0(cero)";
+	private static final int MIN_CHARACTER_NOMBRE_MARCA = 2;
+	private static final int MAX_CHARACTER_NOMBRE_MARCA = 100;
+	private static final int MIN_CHARACTER_COLOR = 3;
+	private static final int MAX_CHARACTER_COLOR = 40;
 	@Id
 	@Column(name = "ID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -79,6 +84,9 @@ public abstract class Producto {
 		if (nombre == null || nombre.isBlank()) {
 			throw new IllegalArgumentException(MSJ_ERROR_NOMBRE);
 		}
+		if (nombre.length()<MIN_CHARACTER_NOMBRE_MARCA || nombre.length()>MAX_CHARACTER_NOMBRE_MARCA) {
+			throw new QuantityCharactersException(MIN_CHARACTER_NOMBRE_MARCA, MAX_CHARACTER_NOMBRE_MARCA);
+		}
 		this.nombre = nombre;
 	}
 
@@ -86,12 +94,18 @@ public abstract class Producto {
 		if (marca == null || marca.isBlank()) {
 			throw new IllegalArgumentException(MSJ_ERROR_MARCA);
 		}
+		if (marca.length()<MIN_CHARACTER_NOMBRE_MARCA || marca.length()>MAX_CHARACTER_NOMBRE_MARCA) {
+			throw new QuantityCharactersException(MIN_CHARACTER_NOMBRE_MARCA, MAX_CHARACTER_NOMBRE_MARCA);
+		}
 		this.marca = marca;
 	}
 
 	public void setColor(String color) {
 		if (color == null || color.isBlank()) {
 			throw new IllegalArgumentException(MSJ_ERROR_COLOR);
+		}
+		if (color.length()<MIN_CHARACTER_COLOR || color.length()>MAX_CHARACTER_COLOR) {
+			throw new QuantityCharactersException(MIN_CHARACTER_COLOR, MAX_CHARACTER_COLOR);
 		}
 		this.color = color;
 	}
