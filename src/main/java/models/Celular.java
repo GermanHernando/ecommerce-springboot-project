@@ -35,7 +35,7 @@ public class Celular extends Producto {
 	Celular(){}
 	
 	public Celular(String nombre, String marca, String color, double precio, int cantidad, int tamanio,
-			String resolucionPantalla, String resolucionCamara, int ram, int almacenamiento) {
+			String resolucionPantalla, String resolucionCamara, int ram, int almacenamiento) throws QuantityCharactersException{
 		super(nombre, marca, color, precio, cantidad);
 		this.setTamanio(tamanio);
 		this.setResolucionPantalla(resolucionPantalla);

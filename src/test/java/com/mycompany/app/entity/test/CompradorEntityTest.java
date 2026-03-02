@@ -17,7 +17,6 @@ public class CompradorEntityTest {
 	
 	@Test
 	public void testTieneEmailValido() {
-	    // Esto lanza el Comprador solo si no hay excepción
 	    Comprador c = assertDoesNotThrow(() -> CompradorHelper.crearCompradorValido());
 	    assertTrue(c.tieneEmail());
 	}
