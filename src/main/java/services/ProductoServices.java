@@ -8,6 +8,8 @@ public interface ProductoServices{
 	
 	public void guardarProducto(Producto producto);
 	
+	public void eliminarProducto(Producto producto);
+	
 	public boolean existeProducto(String nombre);
 	
 }

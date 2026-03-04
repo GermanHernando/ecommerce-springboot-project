@@ -27,6 +27,12 @@ public class ProductoServicesImp implements ProductoServices {
 	}
 
 	@Override
+	public void eliminarProducto(Producto producto) {
+		this.repository.delete(producto);
+		
+	}
+	
+	@Override
 	public boolean existeProducto(String nombre) {
 		boolean existe = false;
 		if (nombre != null) {
@@ -36,4 +42,5 @@ public class ProductoServicesImp implements ProductoServices {
 		return existe;
 	}
 
+	
 }

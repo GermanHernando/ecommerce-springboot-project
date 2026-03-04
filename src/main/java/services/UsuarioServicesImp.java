@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import models.Comprador;
 import models.Usuario;
 import repositories.UsuarioRepository;
 
@@ -34,6 +35,11 @@ public class UsuarioServicesImp implements UsuarioServices {
 			existe = !usuarios.isEmpty();
 		}
 		return existe;
+	}
+
+	@Override
+	public void eliminarComprador(Comprador c) {
+		repository.delete(c);
 	}
 
 }

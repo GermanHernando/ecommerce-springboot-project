@@ -26,5 +26,11 @@ public class PedidoServicesImp implements PedidoServices {
 		this.repository.save(pedido);
 	}
 
+	@Override
+	public void eliminarPedido(Pedido pedido) {
+		this.repository.delete(pedido);
+		
+	}
+
 	
 }

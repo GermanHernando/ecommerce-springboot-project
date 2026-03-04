@@ -22,7 +22,8 @@ import jakarta.persistence.Table;
 public class Pedido implements Calculable{
 	
 	private static final String MSJ_ERROR_COMPRADOR= "No se encontro el usuario, debe estar logeado para continuar con el pedido";
-	private static final String MSJ_ERROR_TOTAL = "El total no puede ser igual o menor a 0"; 
+	private static final String MSJ_ERROR_TOTAL = "El total no puede ser igual o menor a 0";
+	private static final String MSJ_ERROR_LISTA = "La lista no puede ser nula o vacia"; 
 	@Id
 	@Column(name="ID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,9 +47,9 @@ public class Pedido implements Calculable{
 	
 	public Pedido(Comprador comprador,List<ItemPedido> itemsCarrito, double total) {
 		this.fecha = LocalDateTime.now();
-		this.setTotal(total);
 		this.setComprador(comprador);
-		this.llenarLista(itemsCarrito);
+		this.setItemsPedido(itemsCarrito);
+		this.setTotal(total);
 		this.estado = Estado.CREADO;
 		this.agregarPedidoAComprador(comprador);
 	}
@@ -59,8 +60,20 @@ public class Pedido implements Calculable{
 		}
 		this.comprador = comprador;
 	}
-
 	
+	public void setItemsPedido(List<ItemPedido> itemsPedido) {
+		if (itemsPedido == null || itemsPedido.isEmpty()) {
+			throw new IllegalArgumentException(MSJ_ERROR_LISTA);
+		}
+		llenarLista(itemsPedido);;
+	}
+	
+	private void llenarLista(List<ItemPedido>lista) {
+		this.itemsPedido = lista;
+		for (ItemPedido itemPedido : itemsPedido) {
+			itemPedido.asignarPedido(this);
+		}
+	}
 	private void setTotal(double total) {
 		if (total<=0) {
 			throw new IllegalArgumentException(MSJ_ERROR_TOTAL);
@@ -68,14 +81,8 @@ public class Pedido implements Calculable{
 		this.total = total;
 	}
 	
-	private void llenarLista(List<ItemPedido>lista) {
-		if(!lista.isEmpty()) {
-			this.itemsPedido = lista;
-			for (ItemPedido itemPedido : itemsPedido) {
-				itemPedido.asignarPedido(this);
-			}
-		}
-	}
+	
+	
 	
 	@Override
 	public double precioConIva(double total) {
