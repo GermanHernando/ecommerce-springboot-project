@@ -4,11 +4,13 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.mycompany.app.App;
+
 import helpers.PedidoHelper;
 import models.Pedido;
 import services.PedidoServices;
 
-@SpringBootTest
+@SpringBootTest(classes = App.class)
 public class PedidoServiceTest {
 
 	@Autowired

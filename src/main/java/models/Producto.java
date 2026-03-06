@@ -2,12 +2,15 @@ package models;
 
 import exceptions.QuantityCharactersException;
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 
-@MappedSuperclass
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Producto {
 
 	private static final String MSJ_ERROR_NOMBRE = "El nombre no puede ser nulo o estar vacio";

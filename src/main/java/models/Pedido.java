@@ -14,7 +14,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -32,7 +34,8 @@ public class Pedido implements Calculable{
 	private LocalDateTime fecha;
 	@Column(name = "TOTAL")
 	private double total;
-	@Column(name = "COMPRADOR_ID")
+	@ManyToOne
+	@JoinColumn(name = "COMPRADOR_ID")
 	private Comprador comprador;
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "ID", referencedColumnName = "ID" )
@@ -40,7 +43,8 @@ public class Pedido implements Calculable{
 	@Column(name = "ESTADO")
 	@Enumerated(EnumType.STRING)
 	private Estado estado;
-	@Column(name = "PAGO_ID")
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "PAGO_ID")
 	private Pago pago;
 	
 	Pedido(){}
