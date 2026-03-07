@@ -36,6 +36,11 @@
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+		<!-- Spring Boot Web-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
 		<!--  Springboot Test includes JUnit -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

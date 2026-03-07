@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CELLUX — Tienda de Celulares</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-logo">CELLUX</div>
+    <ul class="nav-links">
+      <li><a href="#">Inicio</a></li>
+      <li><a href="#">Celulares</a></li>
+      <li><a href="#">Cargadores</a></li>
+      <li><a href="#">Ofertas</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="btn-icon" aria-label="Buscar">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </button>
+      <button class="btn-icon cart-btn" aria-label="Carrito">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-count">3</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <span class="hero-tag">Nueva colección 2025</span>
+      <h1 class="hero-title">Tecnología<br/><em>en tus manos</em></h1>
+      <p class="hero-subtitle">Los últimos smartphones y accesorios de carga. Rápido, simple, confiable.</p>
+      <div class="hero-cta">
+        <a href="#" class="btn-primary">Ver catálogo</a>
+        <a href="#" class="btn-ghost">Conocer más</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="phone-mockup">
+        <div class="phone-screen">
+          <div class="screen-top-bar"></div>
+          <div class="screen-icon-row">
+            <div class="s-icon"></div>
+            <div class="s-icon"></div>
+            <div class="s-icon"></div>
+            <div class="s-icon"></div>
+          </div>
+          <div class="screen-card"></div>
+          <div class="screen-bar"></div>
+          <div class="screen-bar short"></div>
+        </div>
+      </div>
+      <div class="hero-blob"></div>
+    </div>
+  </section>
+
+  <!-- CATEGORÍAS -->
+  <section class="categories">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Explorar</span>
+        <h2 class="section-title">Categorías</h2>
+      </div>
+      <div class="cat-grid">
+        <a href="#" class="cat-card cat-phones">
+          <div class="cat-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          </div>
+          <div class="cat-info">
+            <h3>Celulares</h3>
+            <span>+40 modelos</span>
+          </div>
+          <div class="cat-arrow">→</div>
+        </a>
+        <a href="#" class="cat-card cat-chargers">
+          <div class="cat-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 18H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h18a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2"/><polyline points="12 2 7 7 12 7 7 22"/></svg>
+          </div>
+          <div class="cat-info">
+            <h3>Cargadores</h3>
+            <span>Carga rápida & inalámbrica</span>
+          </div>
+          <div class="cat-arrow">→</div>
+        </a>
+        <a href="#" class="cat-card cat-offers">
+          <div class="cat-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+          </div>
+          <div class="cat-info">
+            <h3>Ofertas</h3>
+            <span>Hasta 30% off</span>
+          </div>
+          <div class="cat-arrow">→</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTOS DESTACADOS -->
+  <section class="featured">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Lo más vendido</span>
+        <h2 class="section-title">Destacados</h2>
+        <a href="#" class="see-all">Ver todos →</a>
+      </div>
+      <div class="products-grid">
+
+        <div class="product-card">
+          <div class="product-badge">Nuevo</div>
+          <div class="product-img phone-img-1">
+            <div class="phone-mini">
+              <div class="pm-screen"></div>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-brand">Samsung</span>
+            <h3 class="product-name">Galaxy S24 Ultra</h3>
+            <div class="product-rating">
+              <span class="stars">★★★★★</span>
+              <span class="rating-count">(128)</span>
+            </div>
+            <div class="product-footer">
+              <span class="product-price">$1.299.990</span>
+              <button class="btn-add">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card featured-card">
+          <div class="product-badge sale">-20%</div>
+          <div class="product-img phone-img-2">
+            <div class="phone-mini dark">
+              <div class="pm-screen"></div>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-brand">Apple</span>
+            <h3 class="product-name">iPhone 15 Pro</h3>
+            <div class="product-rating">
+              <span class="stars">★★★★★</span>
+              <span class="rating-count">(342)</span>
+            </div>
+            <div class="product-footer">
+              <div>
+                <span class="product-price">$1.099.990</span>
+                <span class="product-price-old">$1.374.990</span>
+              </div>
+              <button class="btn-add">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-img phone-img-3">
+            <div class="phone-mini purple">
+              <div class="pm-screen"></div>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-brand">Xiaomi</span>
+            <h3 class="product-name">14 Ultra</h3>
+            <div class="product-rating">
+              <span class="stars">★★★★☆</span>
+              <span class="rating-count">(89)</span>
+            </div>
+            <div class="product-footer">
+              <span class="product-price">$849.990</span>
+              <button class="btn-add">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-badge">Popular</div>
+          <div class="product-img charger-img">
+            <div class="charger-mock">
+              <div class="charger-body"></div>
+              <div class="charger-cable"></div>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-brand">Anker</span>
+            <h3 class="product-name">Cargador 67W GaN</h3>
+            <div class="product-rating">
+              <span class="stars">★★★★★</span>
+              <span class="rating-count">(214)</span>
+            </div>
+            <div class="product-footer">
+              <span class="product-price">$39.990</span>
+              <button class="btn-add">+</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- BANNER PROMO -->
+  <section class="promo-banner">
+    <div class="container">
+      <div class="promo-inner">
+        <div class="promo-text">
+          <span class="promo-tag">Oferta limitada</span>
+          <h2>Carga rápida<br/><strong>65W por $29.990</strong></h2>
+          <p>Compatible con todos los modelos. Envío gratis a todo el país.</p>
+          <a href="#" class="btn-primary light">Aprovechar oferta</a>
+        </div>
+        <div class="promo-visual">
+          <div class="promo-charger">
+            <div class="pc-head"></div>
+            <div class="pc-body"></div>
+            <div class="pc-pin"></div>
+            <div class="lightning-bolt">⚡</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFICIOS -->
+  <section class="benefits">
+    <div class="container">
+      <div class="benefits-grid">
+        <div class="benefit-item">
+          <div class="benefit-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          </div>
+          <div>
+            <h4>Envío gratis</h4>
+            <p>En compras mayores a $50.000</p>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div>
+            <h4>Garantía oficial</h4>
+            <p>12 meses en todos los productos</p>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          </div>
+          <div>
+            <h4>Hasta 12 cuotas</h4>
+            <p>Sin interés con tarjeta</p>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div>
+            <h4>Soporte 24/7</h4>
+            <p>Atención por WhatsApp y chat</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">CELLUX</div>
+          <p>La mejor tecnología al mejor precio. Envíos a todo el país.</p>
+        </div>
+        <div class="footer-links">
+          <h5>Tienda</h5>
+          <ul>
+            <li><a href="#">Celulares</a></li>
+            <li><a href="#">Cargadores</a></li>
+            <li><a href="#">Ofertas</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h5>Ayuda</h5>
+          <ul>
+            <li><a href="#">Seguimiento de pedido</a></li>
+            <li><a href="#">Garantía</a></li>
+            <li><a href="#">Cambios y devoluciones</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h5>Contacto</h5>
+          <p>📱 +54 11 1234-5678</p>
+          <p>✉️ hola@cellux.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 CELLUX. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
