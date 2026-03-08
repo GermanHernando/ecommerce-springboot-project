@@ -5,9 +5,10 @@
 
 	import org.junit.jupiter.api.Test;
 
-	import exceptions.QuantityCharactersException;
+import com.mycompany.models.Celular;
+
+import exceptions.QuantityCharactersException;
 	import helpers.CelularHelper;
-	import models.Celular;
 
 	public class CelularEntityTest {
 

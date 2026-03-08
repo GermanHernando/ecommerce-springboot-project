@@ -7,9 +7,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
+import com.mycompany.models.Comprador;
+
 import exceptions.QuantityCharactersException;
 import helpers.CompradorHelper;
-import models.Comprador;
 
 public class CompradorEntityTest {
 

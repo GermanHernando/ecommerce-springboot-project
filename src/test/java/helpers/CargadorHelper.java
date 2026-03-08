@@ -1,6 +1,6 @@
 package helpers;
 
-import models.Cargador;
+import com.mycompany.models.Cargador;
 
 public class CargadorHelper {
 

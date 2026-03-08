@@ -1,6 +1,6 @@
 package helpers;
 
-import models.Celular;
+import com.mycompany.models.Celular;
 
 public class CelularHelper {
 

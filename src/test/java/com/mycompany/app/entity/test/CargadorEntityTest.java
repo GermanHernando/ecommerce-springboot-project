@@ -6,9 +6,10 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
+import com.mycompany.models.Cargador;
+
 import exceptions.QuantityCharactersException;
 import helpers.CargadorHelper;
-import models.Cargador;
 
 public class CargadorEntityTest {
 

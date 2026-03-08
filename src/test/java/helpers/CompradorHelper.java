@@ -1,6 +1,6 @@
 package helpers;
 
-import models.Comprador;
+import com.mycompany.models.Comprador;
 
 public class CompradorHelper {
 

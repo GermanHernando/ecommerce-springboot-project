@@ -4,8 +4,9 @@ package helpers;
 
 import java.util.ArrayList;
 import java.util.List;
-import models.ItemPedido;
-import models.Pedido;
+
+import com.mycompany.models.ItemPedido;
+import com.mycompany.models.Pedido;
 
 public class PedidoHelper {
 	
