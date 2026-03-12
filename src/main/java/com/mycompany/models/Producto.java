@@ -47,12 +47,16 @@ public abstract class Producto {
 		this.setCantidad(cantidad);
 	}
 	
-	public boolean mismoNombre(String nombre) {
-		return this.nombre.equals(nombre);
+	public Long getId() {
+		return id;
 	}
-	
-	public boolean mismaMarca(String nombre) {
-		return this.nombre.equals(nombre);
+
+	public String getMarca() {
+		return marca;
+	}
+
+	public String getColor() {
+		return color;
 	}
 	
 	public String getNombre() {
@@ -65,6 +69,14 @@ public abstract class Producto {
 	
 	public int getCantidad() {
 		return this.cantidad;
+	}
+	
+	public boolean mismoNombre(String nombre) {
+		return this.nombre.equals(nombre);
+	}
+	
+	public boolean mismaMarca(String nombre) {
+		return this.nombre.equals(nombre);
 	}
 	
 	public void aumentarCantidad() {

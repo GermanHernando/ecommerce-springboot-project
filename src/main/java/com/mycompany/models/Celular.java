@@ -11,7 +11,7 @@ public class Celular extends Producto {
 
 
 	private static final String MSG_ERROR_TAMANIO = "El tamanio no puede ser 0(cero)";
-	private static final int MIN_CANT_CARACTERES_TAMANIO = 9;
+	private static final int MIN_CANT_CARACTERES_TAMANIO = 2;
 	private static final int MAX_CANT_CARACTERES_TAMANIO = 15;
 	private static final String MSG_ERROR_RAM = "La ram no puede ser 0(cero)";
 	private static final int MIN_CANT_CARACTERES_RAM_ALMACENAMIENTO = 1;
@@ -45,6 +45,7 @@ public class Celular extends Producto {
 	}
 
 
+	
 	public void setTamanio(int tamanio) {
 		int cantCaracteres = 0;
 		if (tamanio == 0) {
@@ -103,6 +104,26 @@ public class Celular extends Producto {
 			throw new QuantityCharactersException(MIN_CANT_CARACTERES_RAM_ALMACENAMIENTO, MAX_CANT_CARACTERES_RAM_ALMACENAMIENTO);
 		}
 		this.almacenamiento = almacenamiento;
+	}
+
+	public int getTamanio() {
+		return tamanio;
+	}
+
+	public String getResolucionPantalla() {
+		return resolucionPantalla;
+	}
+
+	public String getResolucionCamara() {
+		return resolucionCamara;
+	}
+
+	public int getRam() {
+		return ram;
+	}
+
+	public int getAlmacenamiento() {
+		return almacenamiento;
 	}
 	
 	

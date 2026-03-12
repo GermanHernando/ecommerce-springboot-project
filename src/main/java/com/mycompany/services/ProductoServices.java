@@ -1,5 +1,9 @@
 package com.mycompany.services;
 
+import java.util.List;
+
+import com.mycompany.models.Cargador;
+import com.mycompany.models.Celular;
 import com.mycompany.models.Producto;
 
 public interface ProductoServices{
@@ -11,5 +15,8 @@ public interface ProductoServices{
 	public void eliminarProducto(Producto producto);
 	
 	public boolean existeProducto(String nombre);
+
+	public  List<Celular> getCelulares();
 	
+	public  List<Cargador> getCargadores();
 }

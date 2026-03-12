@@ -41,6 +41,14 @@ public class Cargador extends Producto {
 	public void setCargaRapida(boolean cargaRapida) {
 		this.cargaRapida = cargaRapida;
 	}
+
+	public int getWats() {
+		return wats;
+	}
+
+	public boolean isCargaRapida() {
+		return cargaRapida;
+	}
 	
 	
 	

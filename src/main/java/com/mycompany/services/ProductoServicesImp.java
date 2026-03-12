@@ -2,10 +2,13 @@ package com.mycompany.services;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mycompany.models.Cargador;
+import com.mycompany.models.Celular;
 import com.mycompany.models.Producto;
 import com.mycompany.repositories.ProductoRepository;
 
@@ -41,6 +44,24 @@ public class ProductoServicesImp implements ProductoServices {
 		}
 		return existe;
 	}
+
+	  @Override
+	    public List<Celular> getCelulares() {
+	        return this.repository.findAll()
+	                .stream()
+	                .filter(p -> p instanceof Celular)
+	                .map(p -> (Celular) p)
+	                .collect(Collectors.toList());
+	    }
+
+	    @Override
+	    public List<Cargador> getCargadores() {
+	        return this.repository.findAll()
+	                .stream()
+	                .filter(p -> p instanceof Cargador)
+	                .map(p -> (Cargador) p)
+	                .collect(Collectors.toList());
+	    }
 
 	
 }
