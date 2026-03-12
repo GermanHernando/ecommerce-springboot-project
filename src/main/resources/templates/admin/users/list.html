@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title th:text="#{page.title}">MOVITEK — Tienda de Celulares</title>
+  <link rel="stylesheet" th:href="@{/css/indexStyles.css}" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<!-- NAVBAR -->
+  <div th:replace="~{navbar :: navbar}"></div>
+  
+  <!-- FOOTER -->
+  <div th:replace="~{footer :: footer}"></div>

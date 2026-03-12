@@ -1,0 +1,202 @@
+/* ═══════════════════════════════════════════════
+   productos.css — Estilos exclusivos de la vista
+   de catálogo de productos (productos.html)
+   ═══════════════════════════════════════════════ */
+
+/* ── Page header ── */
+.page-header {
+  padding: 3rem 0 1rem;
+}
+.page-header .section-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #9ca3af;
+  margin-bottom: 0.5rem;
+}
+.page-header h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #111;
+}
+.page-header .product-count {
+  font-size: 0.85rem;
+  color: #9ca3af;
+  margin-top: 0.25rem;
+}
+
+/* ── Pestañas ── */
+.tabs-wrapper {
+  margin: 2.5rem 0 2rem;
+}
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+  border-bottom: 2px solid #e5e7eb;
+}
+.tab-btn {
+  padding: 0.75rem 1.75rem;
+  font-family: 'Syne', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  cursor: pointer;
+  color: #6b7280;
+  transition: color 0.2s, border-color 0.2s;
+}
+.tab-btn.active {
+  color: #111;
+  border-bottom-color: #111;
+}
+.tab-btn:hover:not(.active) {
+  color: #374151;
+}
+
+/* ── Paneles ── */
+.tab-panel {
+  display: none;
+}
+.tab-panel.active {
+  display: block;
+}
+
+/* ── Grilla de productos ── */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+/* ── Tarjeta ── */
+.product-card {
+  background: #fff;
+  border: 1px solid #f0f0f0;
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: box-shadow 0.2s, transform 0.2s;
+  position: relative;
+}
+.product-card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transform: translateY(-3px);
+}
+
+/* Badges */
+.product-badge {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  background: #111;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.product-badge.sin-stock {
+  background: #ef4444;
+}
+.product-badge.carga-rapida {
+  background: #f59e0b;
+  color: #111;
+}
+
+/* Imagen / placeholder */
+.product-img {
+  background: #f9fafb;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.product-img svg {
+  opacity: 0.15;
+}
+.product-img img {
+  max-height: 160px;
+  object-fit: contain;
+}
+
+/* Info */
+.product-info {
+  padding: 1rem 1.25rem 1.25rem;
+}
+.product-brand {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #9ca3af;
+}
+.product-name {
+  font-family: 'Syne', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0.2rem 0 0.6rem;
+  color: #111;
+}
+.product-specs {
+  font-size: 0.8rem;
+  color: #6b7280;
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+}
+.product-specs span {
+  display: inline-block;
+  background: #f3f4f6;
+  border-radius: 0.4rem;
+  padding: 0.15rem 0.5rem;
+  margin: 0.1rem 0.1rem 0.1rem 0;
+}
+.product-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.75rem;
+}
+.product-price {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #111;
+}
+.btn-add {
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  border: none;
+  background: #111;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.btn-add:hover {
+  background: #333;
+}
+
+/* ── Empty state ── */
+.empty-state {
+  text-align: center;
+  padding: 4rem 1rem;
+  color: #9ca3af;
+}
+.empty-state svg {
+  margin-bottom: 1rem;
+  opacity: 0.3;
+}
+.empty-state p {
+  font-size: 0.95rem;
+}

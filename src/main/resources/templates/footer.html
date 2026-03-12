@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+  <footer class="footer" th:fragment="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo" th:text="#{footer.logo}">MOVITEK</div>
+          <p th:text="#{footer.brand.desc}">La mejor tecnología al mejor precio.</p>
+        </div>
+        <div class="footer-links">
+          <h5 th:text="#{footer.store.title}">Tienda</h5>
+          <ul>
+            <li><a th:href="@{/productos}" th:text="#{nav.productos}">Productos</a></li>
+            <li><a th:href="@{/ofertas}"   th:text="#{footer.store.offers}">Ofertas</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h5 th:text="#{footer.help.title}">Ayuda</h5>
+          <ul>
+            <li><a th:href="@{/pedidos/seguimiento}" th:text="#{footer.help.tracking}">Seguimiento de pedido</a></li>
+            <li><a th:href="@{/garantia}"            th:text="#{footer.help.warranty}">Garantía</a></li>
+            <li><a th:href="@{/devoluciones}"        th:text="#{footer.help.returns}">Cambios y devoluciones</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h5 th:text="#{footer.contact.title}">Contacto</h5>
+          <p th:text="#{footer.contact.phone}">📱 +54 11 1234-5678</p>
+          <p th:text="#{footer.contact.email}">✉️ hola@movitek.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p th:text="#{footer.copyright(${currentYear} ?: 2025)}"></p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

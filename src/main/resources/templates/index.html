@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title th:text="#{page.title}">MOVITEK — Tienda de Celulares</title>
-  <link rel="stylesheet" th:href="@{/css/styles.css}" />
+  <link rel="stylesheet" th:href="@{/css/indexStyles.css}" />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
 </head>
 <body>
@@ -14,9 +14,9 @@
     <div class="nav-logo" th:text="#{nav.logo}">MOVITEK</div>
     <ul class="nav-links">
       <li><a th:href="@{/}"           th:text="#{nav.inicio}">Inicio</a></li>
-      <li><a th:href="@{/celulares}"  th:text="#{nav.celulares}">Celulares</a></li>
-      <li><a th:href="@{/cargadores}" th:text="#{nav.cargadores}">Cargadores</a></li>
+      <li><a th:href="@{/productos}"  th:text="#{nav.productos}">Productos</a></li>
       <li><a th:href="@{/ofertas}"    th:text="#{nav.ofertas}">Ofertas</a></li>
+      <li><a th:href="@{/contacto}" th:text="#{nav.contacto}">Contacto</a></li>
     </ul>
     <div class="nav-actions">
       <button class="btn-icon" th:attr="aria-label=#{nav.buscar}">
@@ -320,7 +320,7 @@
 
       <div class="footer-bottom">
         <!-- #{footer.copyright} = "© {0} MOVITEK. Todos los derechos reservados." -->
-        <p th:text="#{footer.copyright(${currentYear} ?: 2025)}">© 2025 MOVITEK. Todos los derechos reservados.</p>
+        <p th:text="#{footer.copyright(${currentYear} ?: 2026)}">© 2026 MOVITEK. Todos los derechos reservados.</p>
       </div>
     </div>
     <!-- Todavía no se usa -->
