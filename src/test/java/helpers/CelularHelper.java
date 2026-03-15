@@ -10,7 +10,7 @@ public class CelularHelper {
     public static final String COLOR_VALIDO = "Negro";
     public static final double PRECIO_VALIDO = 999.99;
     public static final int CANTIDAD_VALIDA = 10;
-    public static final int TAMANIO_VALIDO = 123456789; 
+    public static final int TAMANIO_VALIDO = 1234; 
     public static final String RESOLUCION_PANTALLA_VALIDA = "1080x2400";
     public static final String RESOLUCION_CAMARA_VALIDA = "108MP Ultra"; 
     public static final int RAM_VALIDA = 8; 
@@ -18,7 +18,7 @@ public class CelularHelper {
 
     // DATOS INVÁLIDOS
     public static final int TAMANIO_CARACTERES_INVALIDO_CERO = 0;
-    public static final int TAMANIO_CARACTERES_INVALIDO = 123; 
+    public static final int TAMANIO_CARACTERES_INVALIDO = 12345678; 
     public static final String RESOLUCION_PANTALLA_VACIA = "";
     public static final String RESOLUCION_PANTALLA_TAMANIO_CARACTERES_INVALIDO= "1234567";
     public static final String RESOLUCION_CAMARA_VACIA = "";
