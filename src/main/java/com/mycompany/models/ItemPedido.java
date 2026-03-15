@@ -10,7 +10,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "ITEMS_PEDIDO")
+@Table(name = "ITEMS_PEDIDOS")
 public class ItemPedido {
 
 	private static final String MSJ_ERROR_PRODUCTO_NULO = "El producto no puede ser nulo";

@@ -11,8 +11,8 @@ public class Celular extends Producto {
 
 
 	private static final String MSG_ERROR_TAMANIO = "El tamanio no puede ser 0(cero)";
-	private static final int MIN_CANT_CARACTERES_TAMANIO = 2;
-	private static final int MAX_CANT_CARACTERES_TAMANIO = 15;
+	private static final int MIN_CANT_CARACTERES_TAMANIO = 4;
+	private static final int MAX_CANT_CARACTERES_TAMANIO = 7;
 	private static final String MSG_ERROR_RAM = "La ram no puede ser 0(cero)";
 	private static final int MIN_CANT_CARACTERES_RAM_ALMACENAMIENTO = 1;
 	private static final int MAX_CANT_CARACTERES_RAM_ALMACENAMIENTO = 4;
@@ -48,7 +48,7 @@ public class Celular extends Producto {
 	
 	public void setTamanio(int tamanio) {
 		int cantCaracteres = 0;
-		if (tamanio == 0) {
+		if (tamanio <= 0) {
 			throw new IllegalArgumentException(MSG_ERROR_TAMANIO);
 		}
 		cantCaracteres = String.valueOf(tamanio).length();
