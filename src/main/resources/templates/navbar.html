@@ -2,30 +2,53 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <body>
 
-  <nav class="navbar" th:fragment="navbar">
-    <div class="nav-logo" th:text="#{nav.logo}">MOVITEK</div>
-    <ul class="nav-links">
-      <li><a th:href="@{/}"          th:text="#{nav.inicio}">Inicio</a></li>
-      <li><a th:href="@{/productos}" th:text="#{nav.productos}">Productos</a></li>
-      <li><a th:href="@{/ofertas}"   th:text="#{nav.ofertas}">Ofertas</a></li>
-      <li><a th:href="@{/contacto}"  th:text="#{nav.contacto}">Contacto</a></li>
-    </ul>
-    <div class="nav-actions">
-      <button class="btn-icon" th:attr="aria-label=#{nav.buscar}">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+<th:block th:fragment="navbar">
+	<nav class="navbar" >
+		<div class="nav-logo" th:text="#{nav.logo}">MOVITEK</div>
+		<ul class="nav-links">
+			<li><a th:href="@{/}" th:text="#{nav.inicio}">Inicio</a></li>
+			<li><a th:href="@{/productos}" th:text="#{nav.productos}">Productos</a></li>
+			<li><a th:href="@{/ofertas}" th:text="#{nav.ofertas}">Ofertas</a></li>
+			<li><a th:href="@{/contacto}" th:text="#{nav.contacto}">Contacto</a></li>
+		</ul>
+		<div class="nav-actions">
+			<button class="btn-icon" th:attr="aria-label=#{nav.buscar}">
+				<svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+					stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8" />
+					<path d="m21 21-4.35-4.35" />
         </svg>
-      </button>
-      <button class="btn-icon cart-btn" th:attr="aria-label=#{nav.carrito}">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-          <line x1="3" y1="6" x2="21" y2="6"/>
-          <path d="M16 10a4 4 0 0 1-8 0"/>
+			</button>
+			<button class="btn-icon cart-btn" th:attr="aria-label=#{nav.carrito}">
+				<svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+					stroke="currentColor" stroke-width="2">
+          <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <path d="M16 10a4 4 0 0 1-8 0" />
         </svg>
-        <span class="cart-count" th:text="${cartCount} ?: '0'">0</span>
-      </button>
-    </div>
-  </nav>
+				<span class="cart-count" th:text="${cartCount} ?: '0'">0</span>
+			</button>
+			<a th:if="${session.usuarioLogueado == null}" th:href="@{/login}"
+				class="btn-primary">Iniciar sesión</a>
 
+			<div th:if="${session.usuarioLogueado != null}" class="nav-user">
+				<button class="btn-icon" id="user-btn" aria-label="Mi cuenta">
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+						stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+            <circle cx="12" cy="7" r="4" />
+        </svg>
+				</button>
+				<div class="user-dropdown" id="user-dropdown">
+					<a th:href="@{/perfil}">Mis datos</a> <a th:href="@{/pedidos}">Mis
+						pedidos</a>
+					<hr />
+					<a th:href="@{/logout}">Cerrar sesión</a>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<script th:src="@{/javascript/navbar.js}"></script>
+</th:block>
 </body>
 </html>

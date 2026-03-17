@@ -1,0 +1,166 @@
+/* ── ADMIN USERS SECTION ────────────────────────── */
+.admin-users-section {
+  padding: 5rem 4rem;
+  min-height: 60vh;
+}
+
+.admin-users-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.admin-users-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: #111;
+}
+
+/* ── TABLA DE USUARIOS ────────────────────────── */
+.users-table-wrapper {
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+}
+
+.users-table thead {
+  background-color: #111;
+}
+
+.users-table thead th {
+  padding: 14px 18px;
+  text-align: left;
+  font-family: 'Syne', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #aaa;
+}
+
+.users-table tbody tr {
+  border-bottom: 1px solid #f0f0f0;
+  transition: background-color 0.15s ease;
+}
+
+.users-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.users-table tbody tr:hover {
+  background-color: #fafaf8;
+}
+
+.users-table tbody td {
+  padding: 14px 18px;
+  color: #333;
+  vertical-align: middle;
+}
+
+.user-id {
+  font-weight: 600;
+  color: #999;
+  font-size: 0.85rem;
+}
+
+.user-password {
+  font-family: monospace;
+  font-size: 0.78rem;
+  color: #aaa;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.user-role {
+  text-align: center;
+}
+
+/* ── BADGES ────────────────────────── */
+.badge {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+.badge--admin {
+  background: #111;
+  color: #fff;
+}
+
+.badge--user {
+  background: #e8f0fe;
+  color: #1a56db;
+}
+
+/* ── ACCIONES ────────────────────────── */
+.user-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.user-actions form {
+  margin: 0;
+  padding: 0;
+  display: inline;
+}
+
+.btn-edit {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #111;
+  background-color: #f0f0ee;
+  border: 1px solid #ddd;
+  padding: 6px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+  white-space: nowrap;
+}
+
+.btn-edit:hover {
+  background-color: #e0e0de;
+}
+
+.btn-delete {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #c0392b;
+  background-color: #fde8e6;
+  border: 1px solid #f5c6c2;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  white-space: nowrap;
+}
+
+.btn-delete:hover {
+  background-color: #fad4d1;
+}
+
+/* ── MENSAJE VACÍO ────────────────────────── */
+.users-empty {
+  text-align: center;
+  margin-top: 5rem;
+  font-size: 1.1rem;
+  color: #aaa;
+}

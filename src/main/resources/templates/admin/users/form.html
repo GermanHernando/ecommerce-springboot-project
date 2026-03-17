@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Usuario — Movitek Admin</title>
+<link
+	href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&display=swap"
+	rel="stylesheet" />
+<link rel="stylesheet" th:href="@{/css/indexStyles.css}" />
+<link rel="stylesheet" th:href="@{/css/form-usuario.css}" />
+</head>
+<body>
+
+	<div class="page-wrapper">
+
+		<a th:href="@{/admin/users}" class="back-link">← Volver al listado</a>
+
+		<div class="page-tag">Administración</div>
+		<h1 class="page-title"
+			th:text="${form.id != null} ? 'Editar usuario' : 'Nuevo usuario'">
+			Nuevo usuario</h1>
+
+		<div class="form-card">
+			<form th:action="@{/admin/users/save}" th:object="${form}"
+				method="post">
+				<input type="hidden" th:field="*{id}" />
+				<div class="fields-row">
+					<div class="field">
+						<label for="nombre">Nombre</label> <input id="nombre" type="text"
+							th:field="*{nombre}"
+							th:classappend="${#fields.hasErrors('nombre')} ? 'is-invalid'"
+							placeholder="Nombre" />
+						<div class="field-error" th:if="${#fields.hasErrors('nombre')}"
+							th:errors="*{nombre}"></div>
+					</div>
+					<div class="field">
+						<label for="apellido">Apellido</label> <input id="apellido"
+							type="text" th:field="*{apellido}"
+							th:classappend="${#fields.hasErrors('apellido')} ? 'is-invalid'"
+							placeholder="Apellido" />
+						<div class="field-error" th:if="${#fields.hasErrors('apellido')}"
+							th:errors="*{apellido}"></div>
+					</div>
+				</div>
+
+				<div class="field">
+					<label for="email">Correo electrónico</label> <input id="email"
+						type="email" th:field="*{email}"
+						th:classappend="${#fields.hasErrors('email')} ? 'is-invalid'"
+						placeholder="usuario@movitek.com" />
+					<div class="field-error" th:if="${#fields.hasErrors('email')}"
+						th:errors="*{email}"></div>
+				</div>
+
+				<div class="field">
+					<label for="contrasenia" th:text = "#{new.password}">Contraseña Nueva</label> <input id="contrasenia"
+						type="password" th:field="*{contrasenia}"
+						th:classappend="${#fields.hasErrors('contrasenia')} ? 'is-invalid'"
+						placeholder="Mín. 8 caracteres, mayús., número y símbolo" />
+					<div class="field-error"
+						th:if="${#fields.hasErrors('contrasenia')}"
+						th:errors="*{contrasenia}"></div>
+				</div>
+
+
+				<hr class="divider" />
+
+				<div class="form-actions">
+					<a th:href="@{/admin/users}" class="btn-ghost">Cancelar</a>
+					<span
+						th:if="${form.id != null && (form.contrasenia == null || form.contrasenia.isEmpty())}"
+						class="badge badge--warning" th:text ="#{not.new.password}"> No hay una nueva
+						contraseña </span>
+
+					<button type="submit" class="btn-primary"
+						th:text="${form.id != null && form.contrasenia != null && !form.contrasenia.isEmpty()} ? 'Guardar cambios' : 'Crear usuario'">
+					</button>
+				</div>
+
+			</form>
+		</div>
+
+	</div>
+
+</body>
+</html>

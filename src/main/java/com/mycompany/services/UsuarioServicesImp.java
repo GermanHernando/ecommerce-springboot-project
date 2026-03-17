@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.mycompany.models.Comprador;
 import com.mycompany.models.Usuario;
@@ -19,12 +20,16 @@ public class UsuarioServicesImp implements UsuarioServices {
 	@Override
 	public Usuario obtenerId(Long id) {
 		Optional<Usuario> usuario = this.repository.findById(id);
-		return usuario.isPresent()?usuario.get():null;
+		return usuario.isPresent() ? usuario.get() : null;
 	}
 
 	@Override
+	@Transactional
 	public void guardarUsuario(Usuario usuario) {
-		this.repository.save(usuario);
+		  System.out.println("Guardando usuario: " + usuario.getEmail());
+		    System.out.println("Activo: " + usuario.isActivo());
+		    this.repository.save(usuario);
+		    System.out.println("Usuario guardado con ID: " + usuario.getId());
 	}
 
 	@Override
@@ -42,4 +47,14 @@ public class UsuarioServicesImp implements UsuarioServices {
 		repository.delete(c);
 	}
 
+
+	public Usuario findByEmailAndPassword(String email, String password) {
+	    List<Usuario> usuarios = repository.findByEmailAndContrasenia(email, password);
+	    return usuarios.isEmpty() ? null : usuarios.get(0);
+	}
+
+	@Override
+	public List<Usuario> listAll() {
+		return this.repository.findAll();
+	}
 }

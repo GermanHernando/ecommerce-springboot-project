@@ -10,24 +10,7 @@
 <body>
 
   <!-- NAVBAR -->
-  <nav class="navbar">
-    <div class="nav-logo" th:text="#{nav.logo}">MOVITEK</div>
-    <ul class="nav-links">
-      <li><a th:href="@{/}"           th:text="#{nav.inicio}">Inicio</a></li>
-      <li><a th:href="@{/productos}"  th:text="#{nav.productos}">Productos</a></li>
-      <li><a th:href="@{/ofertas}"    th:text="#{nav.ofertas}">Ofertas</a></li>
-      <li><a th:href="@{/contacto}" th:text="#{nav.contacto}">Contacto</a></li>
-    </ul>
-    <div class="nav-actions">
-      <button class="btn-icon" th:attr="aria-label=#{nav.buscar}">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      </button>
-      <button class="btn-icon cart-btn" th:attr="aria-label=#{nav.carrito}">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-        <span class="cart-count" th:text="${cartCount} ?: '0'">3</span>
-      </button>
-    </div>
-  </nav>
+  <div th:replace="~{navbar :: navbar}"></div>
 
   <!-- HERO -->
   <section class="hero">
@@ -283,49 +266,7 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-
-        <div class="footer-brand">
-          <div class="footer-logo" th:text="#{footer.logo}">MOVITEK</div>
-          <p th:text="#{footer.brand.desc}">La mejor tecnología al mejor precio. Envíos a todo el país.</p>
-        </div>
-
-        <div class="footer-links">
-          <h5 th:text="#{footer.store.title}">Tienda</h5>
-          <ul>
-            <li><a th:href="@{/celulares}"  th:text="#{footer.store.phones}">Celulares</a></li>
-            <li><a th:href="@{/cargadores}" th:text="#{footer.store.chargers}">Cargadores</a></li>
-            <li><a th:href="@{/ofertas}"    th:text="#{footer.store.offers}">Ofertas</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-links">
-          <h5 th:text="#{footer.help.title}">Ayuda</h5>
-          <ul>
-            <li><a th:href="@{/pedidos/seguimiento}" th:text="#{footer.help.tracking}">Seguimiento de pedido</a></li>
-            <li><a th:href="@{/garantia}"            th:text="#{footer.help.warranty}">Garantía</a></li>
-            <li><a th:href="@{/devoluciones}"        th:text="#{footer.help.returns}">Cambios y devoluciones</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-contact">
-          <h5 th:text="#{footer.contact.title}">Contacto</h5>
-          <p th:text="#{footer.contact.phone}">📱 +54 11 1234-5678</p>
-          <p th:text="#{footer.contact.email}">✉️ hola@movitek.com</p>
-        </div>
-
-      </div>
-
-      <div class="footer-bottom">
-        <!-- #{footer.copyright} = "© {0} MOVITEK. Todos los derechos reservados." -->
-        <p th:text="#{footer.copyright(${currentYear} ?: 2026)}">© 2026 MOVITEK. Todos los derechos reservados.</p>
-      </div>
-    </div>
-    <!-- Todavía no se usa -->
-    <script th:src="@{/javascript/jquery-4.0.0.min.js}"></script>
-  </footer>
+ <div th:replace="~{footer :: footer}"></div>
 
 </body>
 </html>
