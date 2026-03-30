@@ -1,13 +1,16 @@
 package com.mycompany.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.mycompany.models.Comprador;
+import com.mycompany.dtos.CompradorDTO;
+import com.mycompany.dtos.UsuarioDTO;
 import com.mycompany.models.Usuario;
 import com.mycompany.repositories.UsuarioRepository;
 
@@ -16,6 +19,7 @@ public class UsuarioServicesImp implements UsuarioServices {
 
 	@Autowired
 	private UsuarioRepository repository;
+	private ModelMapper mapper = new ModelMapper();
 
 	@Override
 	public Usuario obtenerId(Long id) {
@@ -43,8 +47,8 @@ public class UsuarioServicesImp implements UsuarioServices {
 	}
 
 	@Override
-	public void eliminarComprador(Comprador c) {
-		repository.delete(c);
+	public void eliminarUsuario(Usuario u) {
+		repository.delete(u);
 	}
 
 
@@ -53,8 +57,15 @@ public class UsuarioServicesImp implements UsuarioServices {
 	    return usuarios.isEmpty() ? null : usuarios.get(0);
 	}
 
+	//TODO Corregir usando un generic porque si tengo mas de un tipo de usuario, ahora solo mapeo CompradorDTO
 	@Override
-	public List<Usuario> listAll() {
-		return this.repository.findAll();
+	public List<UsuarioDTO> listAll() {
+		List<Usuario>usuarios = this.repository.findAll();
+		List<UsuarioDTO>usuariosDTO = new ArrayList<UsuarioDTO>();
+		for (Usuario user : usuarios) {
+			usuariosDTO.add(mapper.map(user, CompradorDTO.class));
+		}
+		return usuariosDTO;
+		
 	}
 }

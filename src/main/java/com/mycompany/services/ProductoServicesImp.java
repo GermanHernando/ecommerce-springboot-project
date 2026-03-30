@@ -12,11 +12,13 @@ import com.mycompany.models.Celular;
 import com.mycompany.models.Producto;
 import com.mycompany.repositories.ProductoRepository;
 
+//service en hijas
 @Service
-public class ProductoServicesImp implements ProductoServices {
+public  class ProductoServicesImp implements ProductoServices {
 
 	@Autowired
 	private ProductoRepository repository;
+	
 
 	@Override
 	public Producto obtenerId(Long id) {
@@ -25,8 +27,8 @@ public class ProductoServicesImp implements ProductoServices {
 	}
 
 	@Override
-	public void guardarProducto(Producto usuario) {
-		this.repository.save(usuario);
+	public void guardarProducto(Producto producto) {
+		this.repository.save(producto);
 	}
 
 	@Override
@@ -44,6 +46,9 @@ public class ProductoServicesImp implements ProductoServices {
 		}
 		return existe;
 	}
+	
+	
+	//FIXME COMO HAGO LOS DTOS cuando se usa herencia? Tiene que haber clases que extiendan a productoServicesImp(sacar instance of)
 
 	  @Override
 	    public List<Celular> getCelulares() {
