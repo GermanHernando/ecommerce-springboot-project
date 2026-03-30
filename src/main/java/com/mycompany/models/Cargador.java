@@ -1,6 +1,7 @@
 package com.mycompany.models;
 
-import exceptions.QuantityCharactersException;
+import com.mycompany.models.validator.CargadorValidator;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -9,44 +10,33 @@ import jakarta.persistence.Table;
 @Table(name="CARGADORES")
 public class Cargador extends Producto {
 	
-	private static final String MSG_ERROR_WATS = "La cantidad de wats no puede ser 0(cero)";
-	private static final int MIN_CANT_CARACTERES_WATS = 1;
-	private static final int MAX_CANT_CARACTERES_WATS = 4;
 	@Column(name = "WATS") 
-	private int wats;
+	private Integer wats;
 	@Column(name = "CARGA_RAPIDA")
-	private boolean cargaRapida;
+	private Boolean cargaRapida;
 	
 	Cargador(){}
 	
-	public Cargador(String nombre, String marca, String color, double precio, int cantidad, int wats,
-			boolean cargaRapida) {
+	public Cargador(String nombre, String marca, String color, Double precio, Integer cantidad, Integer wats,
+			Boolean cargaRapida) {
 		super(nombre, marca, color, precio, cantidad);
 		this.setWats(wats);
 		this.setCargaRapida(cargaRapida);
 	}
 
-	public void setWats(int wats) {
-		int cantCaracteres = 0;
-		if (wats == 0) {
-			throw new IllegalArgumentException(MSG_ERROR_WATS);
-		}
-		cantCaracteres = String.valueOf(wats).length();
-		if (cantCaracteres<MIN_CANT_CARACTERES_WATS || cantCaracteres>MAX_CANT_CARACTERES_WATS ) {
-			throw new QuantityCharactersException(MIN_CANT_CARACTERES_WATS, MAX_CANT_CARACTERES_WATS);
-		}
-		this.wats = wats;
+	public void setWats(Integer wats) {
+		this.wats = CargadorValidator.watsValidator(wats);
 	}
 
-	public void setCargaRapida(boolean cargaRapida) {
-		this.cargaRapida = cargaRapida;
+	public void setCargaRapida(Boolean cargaRapida) {
+		this.cargaRapida = CargadorValidator.cargaRapidaValidator(cargaRapida);
 	}
 
-	public int getWats() {
+	public Integer getWats() {
 		return wats;
 	}
 
-	public boolean isCargaRapida() {
+	public Boolean isCargaRapida() {
 		return cargaRapida;
 	}
 	

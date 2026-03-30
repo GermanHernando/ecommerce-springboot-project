@@ -1,6 +1,6 @@
 package com.mycompany.models;
 
-import exceptions.QuantityCharactersException;
+import com.mycompany.models.validator.ProductoValidator;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,20 +10,12 @@ import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.Table;
 
+
 @Entity
 @Table(name = "PRODUCTOS")
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Producto {
 
-	private static final String MSJ_ERROR_NOMBRE = "El nombre no puede ser nulo o estar vacio";
-	private static final String MSJ_ERROR_MARCA = "La marca no puede ser nula o estar vacia";
-	private static final String MSJ_ERROR_COLOR = "El color no puede ser nulo o estar vacio";
-	private static final String MSJ_ERROR_PRECIO = "El precio no puede ser menor o igual a 0(cero)";
-	private static final String MSJ_ERROR_CANTIDAD = "La cantidad no puede ser menor o igual a 0(cero)";
-	private static final int MIN_CHARACTER_NOMBRE_MARCA = 2;
-	private static final int MAX_CHARACTER_NOMBRE_MARCA = 100;
-	private static final int MIN_CHARACTER_COLOR = 3;
-	private static final int MAX_CHARACTER_COLOR = 40;
 	@Id
 	@Column(name = "ID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,13 +27,13 @@ public abstract class Producto {
 	@Column(name = "COLOR")
 	private String color;
 	@Column(name = "PRECIO")
-	private double precio;
+	private Double precio;
 	@Column(name = "CANTIDAD")
-	private int cantidad;
+	private Integer cantidad;
 	
 	Producto(){}
 	
-	public Producto(String nombre, String marca, String color, double precio, int cantidad) {
+	public Producto(String nombre, String marca, String color, Double precio, Integer cantidad) {
 		this.setNombre(nombre);
 		this.setMarca(marca);
 		this.setColor(color);
@@ -65,11 +57,11 @@ public abstract class Producto {
 		return this.nombre;
 	}
 	
-	public double  getPrecio() {
+	public Double  getPrecio() {
 		return this.precio;
 	}
 	
-	public int getCantidad() {
+	public Integer getCantidad() {
 		return this.cantidad;
 	}
 	
@@ -98,47 +90,23 @@ public abstract class Producto {
 	}
 
 	public void setNombre(String nombre) {
-		if (nombre == null || nombre.isBlank()) {
-			throw new IllegalArgumentException(MSJ_ERROR_NOMBRE);
-		}
-		if (nombre.length()<MIN_CHARACTER_NOMBRE_MARCA || nombre.length()>MAX_CHARACTER_NOMBRE_MARCA) {
-			throw new QuantityCharactersException(MIN_CHARACTER_NOMBRE_MARCA, MAX_CHARACTER_NOMBRE_MARCA);
-		}
-		this.nombre = nombre;
+		this.nombre = ProductoValidator.nombreValidator(nombre);
 	}
 
 	public void setMarca(String marca) {
-		if (marca == null || marca.isBlank()) {
-			throw new IllegalArgumentException(MSJ_ERROR_MARCA);
-		}
-		if (marca.length()<MIN_CHARACTER_NOMBRE_MARCA || marca.length()>MAX_CHARACTER_NOMBRE_MARCA) {
-			throw new QuantityCharactersException(MIN_CHARACTER_NOMBRE_MARCA, MAX_CHARACTER_NOMBRE_MARCA);
-		}
-		this.marca = marca;
+		this.marca = ProductoValidator.marcaValidator(marca);
 	}
 
 	public void setColor(String color) {
-		if (color == null || color.isBlank()) {
-			throw new IllegalArgumentException(MSJ_ERROR_COLOR);
-		}
-		if (color.length()<MIN_CHARACTER_COLOR || color.length()>MAX_CHARACTER_COLOR) {
-			throw new QuantityCharactersException(MIN_CHARACTER_COLOR, MAX_CHARACTER_COLOR);
-		}
-		this.color = color;
+		this.color = ProductoValidator.colorValidator(color);
 	}
 
 	public void setPrecio(double precio) {
-		if (precio <= 0) {
-			throw new IllegalArgumentException(MSJ_ERROR_PRECIO);
-		}
-		this.precio = precio;
+		this.precio = ProductoValidator.precioValidator(precio);
 	}
 
 	public void setCantidad(int cantidad) {
-		if (cantidad <= 0) {
-			throw new IllegalArgumentException(MSJ_ERROR_CANTIDAD);
-		}
-		this.cantidad = cantidad;
+		this.cantidad = ProductoValidator.cantidadValidator(cantidad);
 	}
 
 	

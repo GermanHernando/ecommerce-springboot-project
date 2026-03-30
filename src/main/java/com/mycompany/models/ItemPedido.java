@@ -1,5 +1,7 @@
 package com.mycompany.models;
 
+import com.mycompany.models.validator.ItemPedidoValidator;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,9 +15,7 @@ import jakarta.persistence.Table;
 @Table(name = "ITEMS_PEDIDOS")
 public class ItemPedido {
 
-	private static final String MSJ_ERROR_PRODUCTO_NULO = "El producto no puede ser nulo";
-	private static final String MSJ_ERROR_PRECIO = "El precio no puede ser menor o igual a 0(cero)";
-	private static final String MSJ_ERROR_CANTIDAD = "La cantidad no puede ser menor o igual a 0(cero)";
+	
 	@Id
 	@Column(name = "ID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,13 +27,13 @@ public class ItemPedido {
 	@JoinColumn(name = "PRODUCTO_ID")
 	private Producto producto;
 	@Column(name = "PRECIO_UNITARIO")
-	private double precio;
+	private Double precio;
 	@Column(name = "CANTIDAD")
-	private int cantidad;
+	private Integer cantidad;
 	
 	public ItemPedido() {}
 	
-	public ItemPedido(Producto producto, double precio, int cantidad) {
+	public ItemPedido(Producto producto, Double precio, Integer cantidad) {
 		this.setProducto(producto);
 		this.setPrecio(precio);
 		this.setCantidad(cantidad);
@@ -41,24 +41,15 @@ public class ItemPedido {
 	
 	
 	public void setProducto(Producto producto) {
-		if (producto == null) {
-			throw new IllegalArgumentException(MSJ_ERROR_PRODUCTO_NULO);
-		}
-		this.producto = producto;
+		this.producto = ItemPedidoValidator.productoValidator(producto);
 	}
 
-	public void setPrecio(double precio) {
-		if (precio <= 0) {
-			throw new IllegalArgumentException(MSJ_ERROR_PRECIO);
-		}
-		this.precio = precio;
+	public void setPrecio(Double precio) {
+		this.precio = ItemPedidoValidator.precioValidator(precio);
 	}
 
-	public void setCantidad(int cantidad) {
-		if (cantidad <= 0) {
-			throw new IllegalArgumentException(MSJ_ERROR_CANTIDAD);
-		}
-		this.cantidad = cantidad;
+	public void setCantidad(Integer cantidad) {
+		this.cantidad = ItemPedidoValidator.cantidadValidator(cantidad);
 	}
 
 	public void incrementarCantidad(int cantidad) {
