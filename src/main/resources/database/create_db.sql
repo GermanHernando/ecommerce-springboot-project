@@ -10,9 +10,15 @@ CREATE TABLE COMPRADORES(
 ID bigint not null,
 NOMBRE varchar(60)not null,
 APELLIDO varchar(60)not null,
-TELEFONO int not null,
-DIRECCION varchar(90)not null,
-CODIGO_POSTAL varchar(10) not null,
+CONTACTO_TELEFONO int,
+DIR_CALLE varchar(80),
+DIR_ALTURA int(8),
+DIR_PISO int (2),
+DIR_DEPARTAMENTO varchar(5),
+DIR_CIUDAD varchar(80),
+DIR_PROVINCIA varchar(80),
+DIR_PAIS varchar(80),
+DIR_CODIGO_POSTAL varchar(10),
 PRIMARY KEY(ID)
 );
 alter table COMPRADORES add constraint COMP$USU foreign key(ID) references USUARIOS(ID);

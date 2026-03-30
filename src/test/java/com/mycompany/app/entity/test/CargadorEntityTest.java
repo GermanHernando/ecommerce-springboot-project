@@ -20,7 +20,7 @@ public class CargadorEntityTest {
 	 //VALIDO
     @Test
     public void testCargadorValido() {
-        Cargador Cargador = assertDoesNotThrow(() -> CargadorHelper.crearCargadorValido());
+        Cargador cargador = assertDoesNotThrow(() -> CargadorHelper.crearCargadorValido());
     }
     
     
@@ -90,5 +90,11 @@ public class CargadorEntityTest {
             () -> CargadorHelper.crearCargadorWatsTamanioInvalido());
     }
     
+    //CARGA RAPIDA
+    @Test
+    public void testCargaRapidaInvalida() {
+        assertThrows(QuantityCharactersException.class,
+            () -> CargadorHelper.crearCargadorCargaRapidaInvalida());
+    }
 	
 }

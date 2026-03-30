@@ -17,163 +17,202 @@ import helpers.CompradorHelper;
 @ActiveProfiles("test")
 public class CompradorEntityTest {
 
-
-	
 	@Test
 	public void testTieneEmailValido() {
-	    Comprador c = assertDoesNotThrow(() -> CompradorHelper.crearCompradorValido());
-	    assertTrue(c.tieneEmail());
+		Comprador c = assertDoesNotThrow(() -> CompradorHelper.crearCompradorValido());
+		assertTrue(c.tieneEmail());
 	}
-	
-	//EMAIL INVALIDO
-    @Test
-    public void testConstructorEmailNull() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            CompradorHelper.crearCompradorEmailNull();
-        });
-    }
 
-    
-    @Test
-    public void testConstructorEmailVacio() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            CompradorHelper.crearCompradorEmailVacio();
-        });
-    }
+	// EMAIL INVALIDO
+	@Test
+	public void testConstructorEmailNull() {
+		assertThrows(IllegalArgumentException.class, () -> {
+			CompradorHelper.crearCompradorEmailNull();
+		});
+	}
 
-   
-    @Test
-    public void testConstructorEmailFormatoInvalido() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            CompradorHelper.crearCompradorEmailFormatoInvalido();
-        });
-    }
+	@Test
+	public void testConstructorEmailVacio() {
+		assertThrows(IllegalArgumentException.class, () -> {
+			CompradorHelper.crearCompradorEmailVacio();
+		});
+	}
 
-   
-    @Test
-    public void testConstructorEmailCantCaracteres() {
-        assertThrows(QuantityCharactersException.class, () -> {
-            CompradorHelper.crearCompradorEmailCantCaracteres();
-        });
-    }
-    
-    
-    //CONTRASENIA INVALIDA
-    @Test
-    public void testConstructorContraseniaNull() {
-        assertThrows(IllegalArgumentException.class,
-                () -> CompradorHelper.crearCompradorContraseniaNull());
-    }
+	@Test
+	public void testConstructorEmailFormatoInvalido() {
+		assertThrows(IllegalArgumentException.class, () -> {
+			CompradorHelper.crearCompradorEmailFormatoInvalido();
+		});
+	}
 
-    @Test
-    public void testConstructorContraseniaVacia() {
-        assertThrows(IllegalArgumentException.class,
-                () -> CompradorHelper.crearCompradorContraseniaVacia());
-    }
+	@Test
+	public void testConstructorEmailCantCaracteres() {
+		assertThrows(QuantityCharactersException.class, () -> {
+			CompradorHelper.crearCompradorEmailCantCaracteres();
+		});
+	}
 
-    @Test
-    public void testConstructorContraseniaCantCaracteres() {
-        assertThrows(QuantityCharactersException.class,
-                () -> CompradorHelper.crearCompradorContraseniaCantCaracteres());
-    }
+	// CONTRASENIA INVALIDA
+	@Test
+	public void testConstructorContraseniaNull() {
+		assertThrows(IllegalArgumentException.class, () -> CompradorHelper.crearCompradorContraseniaNull());
+	}
 
-    @Test
-    public void testConstructorContraseniaSinMayuscula() {
-        assertThrows(IllegalArgumentException.class,
-                () -> CompradorHelper.crearCompradorContraseniaSinMayuscula());
-    }
+	@Test
+	public void testConstructorContraseniaVacia() {
+		assertThrows(IllegalArgumentException.class, () -> CompradorHelper.crearCompradorContraseniaVacia());
+	}
 
-    @Test
-    public void testConstructorContraseniaSinNumero() {
-        assertThrows(IllegalArgumentException.class,
-                () -> CompradorHelper.crearCompradorContraseniaSinNumero());
-    }
+	@Test
+	public void testConstructorContraseniaCantCaracteres() {
+		assertThrows(QuantityCharactersException.class,
+				() -> CompradorHelper.crearCompradorContraseniaCantCaracteres());
+	}
 
-    @Test
-    public void testConstructorContraseniaSinEspecial() {
-       assertThrows(IllegalArgumentException.class,
-               () -> CompradorHelper.crearCompradorContraseniaSinEspecial());
-    }
+	@Test
+	public void testConstructorContraseniaSinMayuscula() {
+		assertThrows(IllegalArgumentException.class, () -> CompradorHelper.crearCompradorContraseniaSinMayuscula());
+	}
 
-   
-    
-    //NOMBRE INVALIDO
-    @Test
-    public void testConstructorNombreNull() {
-        assertThrows(IllegalArgumentException.class,
-                () -> CompradorHelper.crearCompradorNombreNull());
-    }
+	@Test
+	public void testConstructorContraseniaSinNumero() {
+		assertThrows(IllegalArgumentException.class, () -> CompradorHelper.crearCompradorContraseniaSinNumero());
+	}
 
-    @Test
-    public void testConstructorNombreVacio() {
-        assertThrows(IllegalArgumentException.class,
-                () -> CompradorHelper.crearCompradorNombreVacio());
-    }
+	@Test
+	public void testConstructorContraseniaSinEspecial() {
+		assertThrows(IllegalArgumentException.class, () -> CompradorHelper.crearCompradorContraseniaSinEspecial());
+	}
 
-    @Test
-    public void testConstructorNombreCantCaracteres() {
-        assertThrows(QuantityCharactersException.class,
-                () -> CompradorHelper.crearCompradorNombreCantCaracteres());
-    }
-    
-    //APELLIDO INVALIDO
-    @Test
-    public void testConstructorApellidoNull() {
-        assertThrows(IllegalArgumentException.class,
-                () -> CompradorHelper.crearCompradorApellidoNull());
-    }
+	// NOMBRE INVALIDO
+	@Test
+	public void testConstructorNombreNull() {
+		assertThrows(IllegalArgumentException.class, () -> CompradorHelper.crearCompradorNombreNull());
+	}
 
-    @Test
-    public void testConstructorApellidoVacio() {
-        assertThrows(IllegalArgumentException.class,
-                () -> CompradorHelper.crearCompradorApellidoVacio());
-    }
+	@Test
+	public void testConstructorNombreVacio() {
+		assertThrows(IllegalArgumentException.class, () -> CompradorHelper.crearCompradorNombreVacio());
+	}
 
-    @Test
-    public void testConstructorApellidoCantCaracteres() {
-        assertThrows(QuantityCharactersException.class,
-                () -> CompradorHelper.crearCompradorApellidoCantCaracteres());
-    }
-    
-    //TELEFONO INVALIDO
-    @Test
-    public void testConstructorTelefonoVacio() {
-        assertThrows(IllegalArgumentException.class,
-                () -> CompradorHelper.crearCompradorTelefonoVacio());
-    }
+	@Test
+	public void testConstructorNombreCantCaracteres() {
+		assertThrows(QuantityCharactersException.class, () -> CompradorHelper.crearCompradorNombreCantCaracteres());
+	}
 
-    @Test
-    public void testConstructorTelefonoCantCaracteres() {
-        assertThrows(QuantityCharactersException.class,
-                () -> CompradorHelper.crearCompradorTelefonoCantCaracteres());
-    }
-    
-    //DIRECCION INVALIDA
-    @Test
-    public void testConstructorDireccionNull() {
-        assertThrows(IllegalArgumentException.class,
-                () -> CompradorHelper.crearCompradorDireccionNull());
-    }
+	// APELLIDO INVALIDO
+	@Test
+	public void testConstructorApellidoNull() {
+		assertThrows(IllegalArgumentException.class, () -> CompradorHelper.crearCompradorApellidoNull());
+	}
 
-    @Test
-    public void testConstructorDireccionVacia() {
-        assertThrows(IllegalArgumentException.class,
-                () -> CompradorHelper.crearCompradorDireccionVacia());
-    }
+	@Test
+	public void testConstructorApellidoVacio() {
+		assertThrows(IllegalArgumentException.class, () -> CompradorHelper.crearCompradorApellidoVacio());
+	}
 
-    @Test
-    public void testConstructorDireccionCantCaracteres() {
-        assertThrows(QuantityCharactersException.class,
-                () -> CompradorHelper.crearCompradorDireccionCantCaracteres());
-    }
+	@Test
+	public void testConstructorApellidoCantCaracteres() {
+		assertThrows(QuantityCharactersException.class, () -> CompradorHelper.crearCompradorApellidoCantCaracteres());
+	}
 
-    //CODIGO POSTAL INVALIDO
-    @Test
-    public void testConstructorCodigoPostalFormatoInvalido() {
-        assertThrows(IllegalArgumentException.class,
-                () -> CompradorHelper.crearCompradorCodigoPostalFormatoInvalido());
-    }
-    
-    
+	// TELEFONO INVALIDO
+	@Test
+	public void testConstructorTelefonoVacio() {
+		assertThrows(IllegalArgumentException.class, () -> CompradorHelper.crearCompradorTelefonoVacio());
+	}
+
+	@Test
+	public void testConstructorTelefonoCantCaracteres() {
+		assertThrows(QuantityCharactersException.class, () -> CompradorHelper.crearCompradorTelefonoCantCaracteres());
+	}
+
+	// CALLE INVALIDA
+
+	@Test
+	public void testConstructorDireccionCalleNull() {
+		assertThrows(IllegalArgumentException.class, () -> CompradorHelper.crearCompradorDireccionCalleInvalida());
+	}
+
+	@Test
+	public void testConstructorDireccionCalleCaracteresInvalidos() {
+		assertThrows(QuantityCharactersException.class,
+				() -> CompradorHelper.crearCompradorDireccionCalleInvalidaCaracteres());
+	}
+
+	// ALTURA INVALIDA
+	@Test
+	public void testConstructorDireccionAlturaInvalida() {
+		assertThrows(IllegalArgumentException.class, () -> CompradorHelper.crearCompradorDireccionAlturaInvalida());
+	}
+
+	@Test
+	public void testConstructorDireccionAlturaCaracteresInvalidos() {
+		assertThrows(QuantityCharactersException.class,
+				() -> CompradorHelper.crearCompradorDireccionAlturaInvalidaCaracteres());
+	}
+
+	// PISO INVALIDO
+	@Test
+	public void testConstructorDireccionPisoCaracteresInvalidos() {
+		assertThrows(QuantityCharactersException.class,
+				() -> CompradorHelper.crearCompradorDireccionPisoInvalidoCaracteres());
+	}
+
+	// DEPARTAMENTO INVALIDO
+	@Test
+	public void testConstructorDireccionDepartamentoCaracteresInvalidos() {
+		assertThrows(QuantityCharactersException.class,
+				() -> CompradorHelper.crearCompradorDireccionDepartamentoInvalidoCaracteres());
+	}
+
+	// CIUDAD INVALIDA
+	@Test
+	public void testConstructorDireccionCiudadNull() {
+		assertThrows(IllegalArgumentException.class, () -> CompradorHelper.crearCompradorDireccionCiudadInvalida());
+	}
+
+	@Test
+	public void testConstructorDireccionCiudadCaracteresInvalidos() {
+		assertThrows(QuantityCharactersException.class,
+				() -> CompradorHelper.crearCompradorDireccionCiudadInvalidaCaracteres());
+	}
+
+	// PROVINCIA INVALIDA
+	@Test
+	public void testConstructorDireccionProvinciaNull() {
+		assertThrows(IllegalArgumentException.class, () -> CompradorHelper.crearCompradorDireccionProvinciaInvalida());
+	}
+
+	@Test
+	public void testConstructorDireccionProvinciaCaracteresInvalidos() {
+		assertThrows(QuantityCharactersException.class,
+				() -> CompradorHelper.crearCompradorDireccionProvinciaInvalidaCaracteres());
+	}
+
+	// PAIS INVALIDO
+	@Test
+	public void testConstructorDireccionPaisNull() {
+		assertThrows(IllegalArgumentException.class, () -> CompradorHelper.crearCompradorDireccionPaisInvalido());
+	}
+
+	@Test
+	public void testConstructorDireccionPaisCaracteresInvalidos() {
+		assertThrows(QuantityCharactersException.class,
+				() -> CompradorHelper.crearCompradorDireccionPaisInvalidoCaracteres());
+	}
+
+	// CODIGO POSTAL INVALIDO
+	@Test
+	public void testConstructorDireccionCodigoPostalNull() {
+		assertThrows(IllegalArgumentException.class,
+				() -> CompradorHelper.crearCompradorDireccionCodigoPostalInvalido());
+	}
+
+	@Test
+	public void testConstructorDireccionCodigoPostalFormatoInvalido() {
+		assertThrows(IllegalArgumentException.class,
+				() -> CompradorHelper.crearCompradorDireccionCodigoPostalInvalidoFormato());
+	}
+
 }
-

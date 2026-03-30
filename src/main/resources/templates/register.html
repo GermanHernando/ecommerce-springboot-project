@@ -26,21 +26,21 @@
 				<label for="nombre">Nombre</label>
 				<div class="input-wrap">
 					<input id="nombre" type="text" th:field="*{nombre}"
-						placeholder="Juan" required />
+						placeholder="Nombre" required />
 				</div>
 			</div>
 			<div class="field">
 				<label for="apellido">Apellido</label>
 				<div class="input-wrap">
 					<input id="apellido" type="text" th:field="*{apellido}"
-						placeholder="Pérez" required />
+						placeholder="Apellido" required />
 				</div>
 			</div>
 			<div class="field">
 				<label for="email">Correo electrónico</label>
 				<div class="input-wrap">
 					<input id="email" type="email" th:field="*{email}"
-						placeholder="juan@movitek.com" required />
+						placeholder="ejemplo@movitek.com" required />
 				</div>
 			</div>
 			<div class="field">
@@ -49,27 +49,6 @@
 					<input id="contrasenia" type="password" th:field="*{contrasenia}"
 						placeholder="••••••••" required />
 					<button type="button" class="toggle-pw" onclick="togglePassword()">mostrar</button>
-				</div>
-			</div>
-			<div class="field">
-				<label for="telefono">Teléfono</label>
-				<div class="input-wrap">
-					<input id="telefono" type="tel" th:field="*{telefono}"
-						placeholder="1123456789" required />
-				</div>
-			</div>
-			<div class="field">
-				<label for="direccion">Dirección</label>
-				<div class="input-wrap">
-					<input id="direccion" type="text" th:field="*{direccion}"
-						placeholder="Av. Corrientes 1234" required />
-				</div>
-			</div>
-			<div class="field">
-				<label for="codigoPostal">Código postal</label>
-				<div class="input-wrap">
-					<input id="codigoPostal" type="text" th:field="*{codigoPostal}"
-						placeholder="C1043" required />
 				</div>
 			</div>
 			<button type="submit" class="btn-primary btn-login">Crear cuenta &nbsp;→</button>

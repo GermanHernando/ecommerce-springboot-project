@@ -21,9 +21,10 @@ public class CargadorHelper {
 	private static final String MARCA_TAMANIO_INVALIDO = "M";
 	private static final String COLOR_INVALIDO = null;
 	private static final String COLOR_TAMANIO_INVALIDO = "C";
-	private static final int PRECIO_CANTIDAD_INVALIDO = 0; 
+	private static final double PRECIO_CANTIDAD_INVALIDO = 0; 
 	private static final int WATS_INVALIDOS = 0;
 	private static final int WATS_TAMANIO_INVALIDO = 123456;
+	private static final int CANTIDAD_INVALIDA = 0;
 	
 	
 	
@@ -95,7 +96,7 @@ public class CargadorHelper {
     //CANTIDAD INVALIDA
     public static Cargador crearCargadorCantidadInvalida() {
         return new Cargador(
-        		NOMBRE_VALIDO, MARCA_VALIDA, COLOR_VALIDO, PRECIO_VALIDO, PRECIO_CANTIDAD_INVALIDO,
+        		NOMBRE_VALIDO, MARCA_VALIDA, COLOR_VALIDO, PRECIO_VALIDO, CANTIDAD_INVALIDA,
         		WATS_VALIDOS,true
         );
     }
@@ -115,4 +116,13 @@ public class CargadorHelper {
         );
     }
 	
+    //CARGA RAPIDA INVALIDA
+    public static Cargador crearCargadorCargaRapidaInvalida() {
+        return new Cargador(
+        		NOMBRE_VALIDO, MARCA_VALIDA, COLOR_VALIDO, PRECIO_VALIDO, CANTIDAD_VALIDA,
+        		WATS_TAMANIO_INVALIDO,null
+        );
+    }
+    
+    
 }

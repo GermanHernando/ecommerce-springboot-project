@@ -17,6 +17,17 @@
   color: #111;
 }
 
+.admin-users-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.admin-users-header .admin-users-title {
+    margin-bottom: 0; 
+}
+
 /* ── TABLA DE USUARIOS ────────────────────────── */
 .users-table-wrapper {
   background: #fff;

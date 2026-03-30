@@ -62,18 +62,13 @@
 						th:errors="*{contrasenia}"></div>
 				</div>
 
-
 				<hr class="divider" />
-
 				<div class="form-actions">
 					<a th:href="@{/admin/users}" class="btn-ghost">Cancelar</a>
-					<span
-						th:if="${form.id != null && (form.contrasenia == null || form.contrasenia.isEmpty())}"
-						class="badge badge--warning" th:text ="#{not.new.password}"> No hay una nueva
-						contraseña </span>
-
+					<span th:if="${form.id != null && (form.contrasenia == null || form.contrasenia.isEmpty())}"
+						class="badge badge--warning" > </span>
 					<button type="submit" class="btn-primary"
-						th:text="${form.id != null && form.contrasenia != null && !form.contrasenia.isEmpty()} ? 'Guardar cambios' : 'Crear usuario'">
+						th:text="${form.id != null} ? 'Guardar cambios' : 'Crear usuario'">
 					</button>
 				</div>
 

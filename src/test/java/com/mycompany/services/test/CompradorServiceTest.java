@@ -3,7 +3,7 @@ package com.mycompany.services.test;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
+import org.springframework.test.context.ActiveProfiles;
 import com.mycompany.app.App;
 import com.mycompany.models.Comprador;
 import com.mycompany.services.UsuarioServices;
@@ -11,6 +11,7 @@ import com.mycompany.services.UsuarioServices;
 import helpers.CompradorHelper;
 
 @SpringBootTest(classes = App.class)
+@ActiveProfiles("test")
 public class CompradorServiceTest {
 
 	@Autowired
@@ -25,7 +26,7 @@ public class CompradorServiceTest {
 	@Test
 	private void testDeleteUsuarioCompradorSucces() {
 		Comprador c = CompradorHelper.crearCompradorValido();
-		usuario.eliminarComprador(c);
+		usuario.eliminarUsuario(c);
 	}
 	
 }

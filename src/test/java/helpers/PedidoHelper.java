@@ -17,8 +17,8 @@ public class PedidoHelper {
 	private static void inicializarListaValida() {
 	    itemsPedidoValido = new ArrayList<>();
 	    
-	    ItemPedido item1 = new ItemPedido(CelularHelper.crearCelularValido(), 100, 1);
-	    ItemPedido item2 = new ItemPedido(CargadorHelper.crearCargadorValido(), 50, 1);
+	    ItemPedido item1 = new ItemPedido(CelularHelper.crearCelularValido(), 100.00, 1);
+	    ItemPedido item2 = new ItemPedido(CargadorHelper.crearCargadorValido(), 50.00, 1);
 
 	    itemsPedidoValido.add(item1);
 	    itemsPedidoValido.add(item2);
@@ -33,26 +33,26 @@ public class PedidoHelper {
 	//PEDIDO VALIDO
 	public static Pedido crearPedidoValido() {
 		inicializarListaValida();
-		return new Pedido(CompradorHelper.crearCompradorValido(), itemsPedidoValido,150 );
+		return new Pedido(CompradorHelper.crearCompradorValido(), itemsPedidoValido,150.0 );
 	}
 
 	
 	//COMPRADOR INVALIDO
 	public static Pedido crearPedidoCompradorInvalido() {
 		inicializarListaValida();
-		return new Pedido(null, itemsPedidoValido,150 );
+		return new Pedido(null, itemsPedidoValido,150.0 );
 	}
 	
 	//LISTA INVALIDA
 	public static Pedido crearPedidoListaInvalida() {
 		inicializarListaInvalida();
-		return new Pedido(CompradorHelper.crearCompradorValido(), itemsPedidoInvalido,150 );
+		return new Pedido(CompradorHelper.crearCompradorValido(), itemsPedidoInvalido,150.0 );
 	}
 
 	//TOTAL INVALIDO
 		public static Pedido crearPedidoTotalInvalido() {
 			inicializarListaValida();
-			return new Pedido(CompradorHelper.crearCompradorValido(), itemsPedidoValido,0 );
+			return new Pedido(CompradorHelper.crearCompradorValido(), itemsPedidoValido,0.00 );
 		}
 
 	

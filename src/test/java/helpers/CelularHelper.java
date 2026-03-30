@@ -2,6 +2,7 @@ package helpers;
 
 import com.mycompany.models.Celular;
 
+
 public class CelularHelper {
 
     // DATOS VÁLIDOS
@@ -33,7 +34,8 @@ public class CelularHelper {
 	private static final String MARCA_TAMANIO_INVALIDO = "M";
 	private static final String COLOR_INVALIDO = null;
 	private static final String COLOR_TAMANIO_INVALIDO = "C";
-	private static final int PRECIO_CANTIDAD_INVALIDO = 0; 
+	private static final double PRECIO_INVALIDO = 0; 
+	private static final int CANTIDAD_INVALIDA = 0; 
 
     // CREAR CELULAR VÁLIDO
     public static Celular crearCelularValido() {
@@ -102,7 +104,7 @@ public class CelularHelper {
     //PRECIO INVALIDO
     public static Celular crearCelularPrecioInvalido() {
         return new Celular(
-        		NOMBRE_VALIDO, MARCA_VALIDA, COLOR_VALIDO, PRECIO_CANTIDAD_INVALIDO, CANTIDAD_VALIDA,
+        		NOMBRE_VALIDO, MARCA_VALIDA, COLOR_VALIDO, PRECIO_INVALIDO, CANTIDAD_VALIDA,
             TAMANIO_VALIDO,
             RESOLUCION_PANTALLA_VALIDA, RESOLUCION_CAMARA_VALIDA,
             RAM_VALIDA, ALMACENAMIENTO_VALIDO
@@ -113,7 +115,7 @@ public class CelularHelper {
     //CANTIDAD INVALIDA
     public static Celular crearCelularCantidadInvalida() {
         return new Celular(
-        		NOMBRE_VALIDO, MARCA_VALIDA, COLOR_VALIDO, PRECIO_VALIDO, PRECIO_CANTIDAD_INVALIDO,
+        		NOMBRE_VALIDO, MARCA_VALIDA, COLOR_VALIDO, PRECIO_VALIDO, CANTIDAD_INVALIDA,
             TAMANIO_VALIDO,
             RESOLUCION_PANTALLA_VALIDA, RESOLUCION_CAMARA_VALIDA,
             RAM_VALIDA, ALMACENAMIENTO_VALIDO
