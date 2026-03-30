@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.mycompany.forms.CompradorForm;
 import com.mycompany.forms.LoginForm;
+import com.mycompany.models.Comprador;
 import com.mycompany.models.Usuario;
 import com.mycompany.services.UsuarioServices;
 
@@ -71,7 +72,7 @@ public class LoginController {
 			result = PATH_REGISTER_PAGE_URL;
 		} else {
 			try {
-				userService.guardarUsuario(compradorForm.devolverComprador());
+				userService.guardarUsuario(new Comprador().generarNuevoComprador(compradorForm.devolverComprador()));
 				model.addAttribute("successMessage", "Cuenta creada. ¡Ya podés iniciar sesión!");
 				model.addAttribute("loginForm", new LoginForm());
 				result = "redirect:/" + PATH_PAGES_URL;

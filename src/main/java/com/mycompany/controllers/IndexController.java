@@ -9,6 +9,6 @@ public class IndexController {
 
     @GetMapping("/")
     public String index(Model model) {
-        return "index"; // busca templates/index.html
+        return "index"; 
     }
 }
