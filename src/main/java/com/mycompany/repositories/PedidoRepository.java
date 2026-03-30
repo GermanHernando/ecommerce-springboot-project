@@ -11,7 +11,7 @@ import com.mycompany.models.Pedido;
 @Repository
 public interface PedidoRepository extends JpaRepository<Pedido, Long> {
 
-
+	
 	public List<Pedido> findByFecha(LocalDateTime fecha);
 	
 }
