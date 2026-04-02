@@ -1,15 +1,24 @@
 package com.mycompany.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.mycompany.enums.Permiso;
 import com.mycompany.models.validator.UsuarioValidator;
 
 import exceptions.QuantityCharactersException;
+import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Table;
 
 @Entity
@@ -27,6 +36,11 @@ public abstract class Usuario {
 	private String contrasenia;
 	@Column(name = "ACTIVO")
 	private boolean activo;
+	@Enumerated(EnumType.ORDINAL)
+	@ElementCollection(targetClass = Permiso.class)
+	@CollectionTable(name = "PERMISOS_USUARIOS",joinColumns = @JoinColumn(name = "USUARIO_ID"))
+	@Column(name = "PERMISO_ID" )
+	private List<Permiso>permisos;
 
 	Usuario() {}
 
@@ -34,7 +48,14 @@ public abstract class Usuario {
 		this.setEmail(email);
 		this.setContrasenia(contrasenia);
 		this.setActivo(true);
+		this.permisos = new ArrayList<Permiso>();
+		this.permisos.add(Permiso.COMPRADOR);
 	}
+	
+	public void convertirEnAdmin() {
+		this.permisos.add(Permiso.ADMINISTRADOR);
+	}
+	
 
 	// TODO Validar que no haya emails duplicados en DB
 	public void setEmail(String email) throws QuantityCharactersException {

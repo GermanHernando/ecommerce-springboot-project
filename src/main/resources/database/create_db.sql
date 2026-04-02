@@ -91,7 +91,23 @@ ID int not null,
 VALOR varchar(50)not null,
 PRIMARY KEY(ID)
 );
-    
+
+CREATE TABLE PERMISOS(
+ID int not null,
+NOMBRE varchar(50)not null,
+PRIMARY KEY(ID)
+);
+
+CREATE TABLE PERMISOS_USUARIOS(
+PERMISO_ID int not null,
+USUARIO_ID bigint(50)not null,
+PRIMARY KEY(PERMISO_ID,USUARIO_ID)
+);
+
+alter table PERMISOS_USUARIOS add constraint PUSER$PER foreign key (PERMISO_ID) references PERMISOS(ID);
+alter table PERMISOS_USUARIOS add constraint PUSER$USR foreign key (USUARIO_ID) references USUARIOS(ID);
+
+
 CREATE TABLE METODOS_PAGOS(
 ID int not null,
 VALOR varchar(50)not null,

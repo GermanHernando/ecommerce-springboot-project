@@ -17,7 +17,7 @@ import com.mycompany.services.UsuarioServices;
 @RestController
 public class CompradorApiRestService {
 
-	private static final String PATH_USERS_URL = "/api/users";
+	public static final String PATH_USERS_URL = "/api/users";
 	private static final String PATH_USERS_SAVE_URL = "/api/users/save";
 	
 	@Autowired
