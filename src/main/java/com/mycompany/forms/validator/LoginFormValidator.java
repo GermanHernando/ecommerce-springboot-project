@@ -4,31 +4,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import com.mycompany.forms.UsuarioForm;
+import com.mycompany.forms.LoginForm;
 import com.mycompany.models.validator.UsuarioValidator;
 import com.mycompany.services.UsuarioServices;
 
 import exceptions.QuantityCharactersException;
 
-public abstract class UserFormValidator implements Validator {
+public class LoginFormValidator implements Validator {
 
+	//TODO Consultar, está bien si reutilizo la clase UsuarioServices? O debería tener un LoginServices?
 	@Autowired
 	protected UsuarioServices userServices;
-
+	
 	@Override
 	public boolean supports(Class<?> clazz) {
-		return UsuarioForm.class.equals(clazz);
+		return LoginForm.class.equals(clazz);
 	}
 
 	@Override
 	public void validate(Object target, Errors errors) {
-		UsuarioForm uf = (UsuarioForm) target;
+		LoginForm lf = (LoginForm)target;
 		try {
-			UsuarioValidator.emailValidator(uf.getEmail());
-			boolean existe = userServices.existeUsuario(uf.getEmail());
+			UsuarioValidator.emailValidator(lf.getEmail());
+			boolean existe = userServices.existeUsuario(lf.getEmail());
 			if (existe)errors.rejectValue("email", "email.already.exists");
-			// TODO Consultar, está mal si no utilizo la variable "e" de la excepción? Hay
-			// otra manera más performante?
 		} catch (QuantityCharactersException e) {
 			errors.rejectValue("email", "email.invalid.length");
 		} catch (IllegalArgumentException e) {
@@ -43,7 +42,7 @@ public abstract class UserFormValidator implements Validator {
 		}
 
 		try {
-			UsuarioValidator.contraseniaValidator(uf.getContrasenia());
+			UsuarioValidator.contraseniaValidator(lf.getPassword());
 		} catch (QuantityCharactersException e) {
 			errors.rejectValue("contrasenia", "contrasenia.invalid.length");
 		} catch (IllegalArgumentException e) {

@@ -3,6 +3,9 @@ package com.mycompany.forms.validator;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import com.mycompany.forms.CompradorForm;
+import com.mycompany.models.validator.CompradorValidator;
+
+import exceptions.QuantityCharactersException;
 
 @Component
 public class CompradorFormValidator extends UserFormValidator {
@@ -16,13 +19,22 @@ public class CompradorFormValidator extends UserFormValidator {
 	public void validate(Object target, Errors errors) {
 		super.validate(target, errors);
 		 CompradorForm cf = (CompradorForm) target;
-		if (cf.getNombre()==null || cf.getNombre().isBlank()) {
-			errors.rejectValue("nombre", "nombre.empty");
-		}
-		
-		if (cf.getApellido()==null || cf.getApellido().isBlank()) {
-			errors.rejectValue("apellido", "apellido.empty");
-		}
-	}
+		 
+		 try {
+	            CompradorValidator.nombreValidator(cf.getNombre());
+	        } catch (QuantityCharactersException e) {
+	            errors.rejectValue("nombre", "nombre.invalid.length");
+	        } catch (IllegalArgumentException e) {
+	            errors.rejectValue("nombre", "nombre.empty");
+	        }
+
+	        try {
+	            CompradorValidator.apellidoValidator(cf.getApellido());
+	        } catch (QuantityCharactersException e) {
+	            errors.rejectValue("apellido", "apellido.invalid.length");
+	        } catch (IllegalArgumentException e) {
+	            errors.rejectValue("apellido", "apellido.empty");
+	        }
+	    }
 
 }
