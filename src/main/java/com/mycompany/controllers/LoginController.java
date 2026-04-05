@@ -1,5 +1,6 @@
 package com.mycompany.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,32 +18,32 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 public class LoginController {
 
-	private final UsuarioServices userService;
-	private final static String PATH_PAGES_URL = "login";
-	private final static String PATH_CONTEXT_URL = "/login";
-	private final static String PATH_REGISTER_PAGE_URL = "register";
+	private final static String PATH_PAGES_URL = "unsecured/login";
+	private final static String PATH_CONTEXT_URL_LOGIN = "/login";
+	private final static String PATH_REGISTER_PAGE_URL = "unsecured/register";
+	private final static String PATH_CONTEXT_URL_REGISTER = "/register";
 
-	public LoginController(UsuarioServices userService) {
-		this.userService = userService;
-	}
+	@Autowired
+	private UsuarioServices userService;
 
-	@GetMapping("/login")
+
+	@GetMapping(PATH_CONTEXT_URL_LOGIN)
 	public String showLogin(Model model) {
 		model.addAttribute("loginForm", new LoginForm());
 		model.addAttribute("compradorForm", new CompradorForm());
-		return PATH_PAGES_URL; // → templates/login.html
+		return PATH_PAGES_URL; // → templates/unsecured/login.html
 	}
 
-	@PostMapping("/login")
+	@PostMapping(PATH_CONTEXT_URL_LOGIN)
 	public String processLogin(@ModelAttribute("loginForm") LoginForm form, HttpSession session, Model model) {
 		Usuario usuario = userService.findByEmailAndPassword(form.getEmail(), form.getPassword());
 		String resultadoEsperado = "redirect:/";
 		if (usuario == null) {
 			model.addAttribute("error", "Email o contraseña incorrectos.");
-			resultadoEsperado = "login";
+			resultadoEsperado = PATH_PAGES_URL;
 		} else if (!usuario.isActivo()) {
 			model.addAttribute("error", "Tu cuenta está desactivada. Contactá al administrador.");
-			resultadoEsperado = "login";
+			resultadoEsperado = PATH_PAGES_URL;
 		} else {
 			session.setAttribute("usuarioLogueado", usuario);
 		}
@@ -52,16 +53,16 @@ public class LoginController {
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 		session.invalidate();
-		return "redirect:" + PATH_CONTEXT_URL;
+		return "redirect:" + PATH_CONTEXT_URL_LOGIN;
 	}
 
-	@GetMapping("/register")
+	@GetMapping(PATH_CONTEXT_URL_REGISTER)
 	public String showRegister(Model model) {
 		model.addAttribute("compradorForm", new CompradorForm());
-		return PATH_REGISTER_PAGE_URL; // → templates/register.html
+		return PATH_REGISTER_PAGE_URL; // → templates/unsecured/register.html
 	}
 
-	@PostMapping("/register")
+	@PostMapping(PATH_CONTEXT_URL_REGISTER)
 	public String register(@ModelAttribute("compradorForm") CompradorForm compradorForm, Model model) {
 		String result;
 
@@ -75,7 +76,7 @@ public class LoginController {
 				userService.guardarUsuario(new Comprador().generarNuevoComprador(compradorForm.devolverComprador()));
 				model.addAttribute("successMessage", "Cuenta creada. ¡Ya podés iniciar sesión!");
 				model.addAttribute("loginForm", new LoginForm());
-				result = "redirect:/" + PATH_PAGES_URL;
+				result = "redirect:" + PATH_CONTEXT_URL_LOGIN;
 			} catch (Exception e) {
 				model.addAttribute("registerError", "Ocurrió un error: " + e.getMessage());
 				model.addAttribute("compradorForm", compradorForm);

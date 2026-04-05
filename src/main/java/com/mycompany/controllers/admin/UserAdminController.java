@@ -49,7 +49,7 @@ public class UserAdminController {
 	
 
 	
-	//FIXME Los datos de Registro (telefono, direccion, cod postal) tienen que ser pedidos posteriormente
+	//TODO Los datos de Registro (telefono, direccion, cod postal) tienen que ser pedidos posteriormente
 	//no cuando se crea el usuario Comprador
 	@GetMapping(value = PATH_CONTEXT_URL + "/new")
 	public String newUser(Model model) {
