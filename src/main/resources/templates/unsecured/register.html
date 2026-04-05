@@ -46,7 +46,7 @@
 			<div class="field">
 				<label for="contrasenia">Contraseña</label>
 				<div class="input-wrap">
-					<input id="contrasenia" type="password" th:field="*{contrasenia}"
+					<input id="password" type="password" th:field="*{contrasenia}"
 						placeholder="••••••••" required />
 					<button type="button" class="toggle-pw" onclick="togglePassword()">mostrar</button>
 				</div>
@@ -61,6 +61,7 @@
 	</div>
 
 	<script th:src="@{/javascript/login-password.js}"></script>
+	
 
 </body>
 </html>
