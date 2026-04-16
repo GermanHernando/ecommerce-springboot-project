@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+
+	<th:block th:fragment="userActions">
+
+		<!-- No autenticado -->
+		<a sec:authorize="isAnonymous()" th:href="@{/login}"
+			class="btn-primary" th:text="#{usertopbar.login}">Iniciar sesión</a>
+
+		<!-- Autenticado -->
+		<div sec:authorize="isAuthenticated()" class="nav-user">
+			<button class="btn-icon" id="user-btn" aria-label="Mi cuenta">
+				<svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+					stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+            </svg>
+			</button>
+			<div class="user-dropdown" id="user-dropdown">
+				<span sec:authentication="name" class="dropdown-username"></span>
+				<hr />
+				<a th:href="@{/perfil}" th:text="#{usertopbar.perfil}">Mis datos</a>
+				<a th:href="@{/pedidos}" th:text="#{usertopbar.pedidos}">Mis
+					pedidos</a>
+				<form th:action="@{/logout}">
+					<button type="submit" class="dropdown-logout-btn"
+						th:text="#{usertopbar.logout}">Cerrar sesión</button>
+				</form>
+				<hr />
+
+			</div>
+		</div>
+
+	</th:block>
+</body>
+</html>

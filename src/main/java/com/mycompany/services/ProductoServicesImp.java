@@ -2,22 +2,17 @@ package com.mycompany.services;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-import com.mycompany.models.Cargador;
-import com.mycompany.models.Celular;
 import com.mycompany.models.Producto;
 import com.mycompany.repositories.ProductoRepository;
 
-//service en hijas
-@Service
-public  class ProductoServicesImp implements ProductoServices {
+
+public abstract class ProductoServicesImp<T extends Producto> implements ProductoServices<T> {
 
 	@Autowired
-	private ProductoRepository repository;
+	protected ProductoRepository repository;
 	
 
 	@Override
@@ -48,25 +43,8 @@ public  class ProductoServicesImp implements ProductoServices {
 	}
 	
 	
-	//FIXME COMO HAGO LOS DTOS cuando se usa herencia? Tiene que haber clases que extiendan a productoServicesImp(sacar instance of)
-
+	//TODO -Consultar si está bien implementado junto con sus hijas
 	  @Override
-	    public List<Celular> getCelulares() {
-	        return this.repository.findAll()
-	                .stream()
-	                .filter(p -> p instanceof Celular)
-	                .map(p -> (Celular) p)
-	                .collect(Collectors.toList());
-	    }
-
-	    @Override
-	    public List<Cargador> getCargadores() {
-	        return this.repository.findAll()
-	                .stream()
-	                .filter(p -> p instanceof Cargador)
-	                .map(p -> (Cargador) p)
-	                .collect(Collectors.toList());
-	    }
-
-	
+	    public abstract List<T> getProductos();
+	  
 }

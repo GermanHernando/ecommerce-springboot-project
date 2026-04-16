@@ -1,8 +1,7 @@
 package com.mycompany.models.validator;
 
+import com.mycompany.exceptions.QuantityCharactersException;
 import com.mycompany.models.Direccion;
-
-import exceptions.QuantityCharactersException;
 
 public class InfoContactoValidator {
 

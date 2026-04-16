@@ -2,11 +2,9 @@ package com.mycompany.services;
 
 import java.util.List;
 
-import com.mycompany.models.Cargador;
-import com.mycompany.models.Celular;
 import com.mycompany.models.Producto;
 
-public interface ProductoServices{
+public interface ProductoServices <T extends Producto>{
 
 	public Producto obtenerId(Long id);
 	
@@ -16,7 +14,7 @@ public interface ProductoServices{
 	
 	public boolean existeProducto(String nombre);
 
-	public  List<Celular> getCelulares();
+	public    List<T> getProductos();
+
 	
-	public  List<Cargador> getCargadores();
 }

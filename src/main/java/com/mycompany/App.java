@@ -1,4 +1,4 @@
-package com.mycompany.app;
+package com.mycompany;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,9 +7,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@ComponentScan(basePackages = "com.mycompany")
-@EntityScan(basePackages = "com.mycompany.models")
-@EnableJpaRepositories(basePackages = "com.mycompany.repositories")
+@ComponentScan
+@EntityScan
+@EnableJpaRepositories
 public class App{
 	
     public static void main(String[] args) {

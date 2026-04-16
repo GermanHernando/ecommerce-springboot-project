@@ -1,29 +1,29 @@
 package com.mycompany.models;
 
+import com.mycompany.exceptions.QuantityCharactersException;
 import com.mycompany.models.validator.DireccionValidator;
 
-import exceptions.QuantityCharactersException;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 
 @Embeddable
 public class Direccion {
 
-	@Column(name = "CALLE")
+	@Column(name = "DIR_CALLE")
 	private String calle;
-	@Column(name = "ALTURA")
+	@Column(name = "DIR_ALTURA")
 	private Integer altura;
-	@Column(name = "PISO")
+	@Column(name = "DIR_PISO")
 	private Integer piso;
-	@Column(name = "DEPARTAMENTO")
+	@Column(name = "DIR_DEPARTAMENTO")
 	private String departamento;
-	@Column(name = "CIUDAD")
+	@Column(name = "DIR_CIUDAD")
 	private String ciudad;
-	@Column(name = "PROVINCIA")
+	@Column(name = "DIR_PROVINCIA")
 	private String provincia;
-	@Column(name = "PAIS")
+	@Column(name = "DIR_PAIS")
 	private String pais;
-	@Column(name = "CODIGO_POSTAL")
+	@Column(name = "DIR_CODIGO_POSTAL")
 	private String codigoPostal;
 	
 	

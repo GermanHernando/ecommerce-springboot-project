@@ -3,10 +3,10 @@ package com.mycompany.models;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.mycompany.exceptions.QuantityCharactersException;
 import com.mycompany.forms.CompradorForm;
 import com.mycompany.models.validator.CompradorValidator;
 
-import exceptions.QuantityCharactersException;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;

@@ -2,7 +2,7 @@ package com.mycompany.models.validator;
 
 import java.util.regex.Pattern;
 
-import exceptions.QuantityCharactersException;
+import com.mycompany.exceptions.QuantityCharactersException;
 
 public class UsuarioValidator {
 

@@ -1,6 +1,6 @@
 package com.mycompany.models.validator;
 
-import exceptions.QuantityCharactersException;
+import com.mycompany.exceptions.QuantityCharactersException;
 
 public class CelularValidator {
 	private static final String MSG_ERROR_TAMANIO = "El tamanio no puede ser 0(cero)";

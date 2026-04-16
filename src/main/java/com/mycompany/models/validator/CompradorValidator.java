@@ -1,5 +1,5 @@
 package com.mycompany.models.validator;
-import exceptions.QuantityCharactersException;
+import com.mycompany.exceptions.QuantityCharactersException;
 
 public class CompradorValidator {
 	private static final String MSJ_ERROR_NOMBRE = "El nombre no puede ser vacío o contener caracteres especiales";

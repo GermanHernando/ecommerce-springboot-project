@@ -1,8 +1,8 @@
 package com.mycompany.models;
 
+import com.mycompany.exceptions.QuantityCharactersException;
 import com.mycompany.models.validator.CelularValidator;
 
-import exceptions.QuantityCharactersException;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;

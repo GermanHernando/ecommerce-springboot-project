@@ -9,7 +9,7 @@ import jakarta.persistence.Embedded;
 @Embeddable
 public class InfoContacto {
 
-	@Column(name = "TELEFONO")
+	@Column(name = "CONTACTO_TELEFONO")
 	private Integer telefono;
 	@Embedded
 	private Direccion direccion;

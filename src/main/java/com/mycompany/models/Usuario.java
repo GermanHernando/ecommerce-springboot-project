@@ -3,10 +3,13 @@ package com.mycompany.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
 import com.mycompany.enums.Permiso;
+import com.mycompany.exceptions.QuantityCharactersException;
 import com.mycompany.models.validator.UsuarioValidator;
 
-import exceptions.QuantityCharactersException;
 import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
@@ -90,6 +93,12 @@ public abstract class Usuario {
 		return contrasenia;
 	}
 
-	// cambiarContrasenia()
+	public List<GrantedAuthority>coleccionAutorizaciones(){
+		List<GrantedAuthority>credenciales = new ArrayList<GrantedAuthority>();
+		for (Permiso permiso : this.permisos) {
+			credenciales.add(new SimpleGrantedAuthority(permiso.securityName()));
+		}
+		return credenciales;
+	}
 
 }

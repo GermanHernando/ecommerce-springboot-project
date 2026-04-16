@@ -1,6 +1,6 @@
 package com.mycompany.models.validator;
 
-import exceptions.QuantityCharactersException;
+import com.mycompany.exceptions.QuantityCharactersException;
 
 public class CargadorValidator {
 
