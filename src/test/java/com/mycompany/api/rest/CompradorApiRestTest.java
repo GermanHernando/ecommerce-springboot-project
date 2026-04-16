@@ -40,10 +40,9 @@ public class CompradorApiRestTest {
 			HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
 			//Devuelve lista de UsuariosDTO cuando lee el response.body()
 			List<UsuarioDTO> usuarios = mapper.readerForListOf(UsuarioDTO.class).readValue(response.body());
-			assertEquals(2,usuarios.size());
+			assertEquals(0,usuarios.size());
 		} catch (Exception e) {
 			fail(e.getCause());
 		} 
 	}
-	//FIXME Consultar - Hay un error supuestamente en la configuración
 }

@@ -7,9 +7,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
+import com.mycompany.exceptions.QuantityCharactersException;
 import com.mycompany.models.Celular;
 
-import exceptions.QuantityCharactersException;
 import helpers.CelularHelper;
 	@SpringBootTest
 	@ActiveProfiles("test")

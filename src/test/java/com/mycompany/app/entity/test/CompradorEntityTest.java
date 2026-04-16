@@ -8,9 +8,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
+import com.mycompany.exceptions.QuantityCharactersException;
 import com.mycompany.models.Comprador;
 
-import exceptions.QuantityCharactersException;
 import helpers.CompradorHelper;
 
 @SpringBootTest
