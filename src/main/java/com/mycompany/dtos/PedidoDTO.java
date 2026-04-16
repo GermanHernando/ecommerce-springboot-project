@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.mycompany.enums.Estado;
-import com.mycompany.models.ItemPedido;
 import com.mycompany.models.Pago;
 
 public class PedidoDTO {
@@ -17,10 +16,9 @@ public class PedidoDTO {
 	@JsonProperty(value = "buyerProfile")
 	private CompradorDTO compradorDTO;
 	@JsonProperty(value = "listProducts")
-	private List<ItemPedido> itemsPedido;
-	//TODO Consultar si está bien Enum
+	private List<ItemPedidoDTO> itemsPedido;
 	private Estado estado;
-	//Capaz no deba de estar el pago
+	//TODO Debe ser DTO
 	private Pago pago;
 	
 	
@@ -42,10 +40,10 @@ public class PedidoDTO {
 	public void setCompradorDTO(CompradorDTO compradorDTO) {
 		this.compradorDTO = compradorDTO;
 	}
-	public List<ItemPedido> getItemsPedido() {
+	public List<ItemPedidoDTO> getItemsPedido() {
 		return itemsPedido;
 	}
-	public void setItemsPedido(List<ItemPedido> itemsPedido) {
+	public void setItemsPedido(List<ItemPedidoDTO> itemsPedido) {
 		this.itemsPedido = itemsPedido;
 	}
 	public Estado getEstado() {

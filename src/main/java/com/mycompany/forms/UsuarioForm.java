@@ -1,8 +1,9 @@
 package com.mycompany.forms;
 
-import exceptions.QuantityCharactersException;
+import com.mycompany.exceptions.QuantityCharactersException;
+import com.mycompany.interfaces.EditableForm;
 
-public abstract class UsuarioForm {
+public abstract class UsuarioForm implements EditableForm{
 
 	private Long id;
 	private String email;
@@ -44,7 +45,7 @@ public abstract class UsuarioForm {
 	protected abstract String getApellido();
 
 	public CompradorForm devolverComprador() throws QuantityCharactersException, IllegalArgumentException{
-		return new CompradorForm(this.id,this.email,this.contrasenia,this.getNombre(),this.getApellido());
+	return new CompradorForm(this.id,this.email,this.contrasenia,this.getNombre(),this.getApellido());
 	}
 	
 

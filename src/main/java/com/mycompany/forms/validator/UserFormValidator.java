@@ -4,11 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+import com.mycompany.exceptions.QuantityCharactersException;
 import com.mycompany.forms.UsuarioForm;
 import com.mycompany.models.validator.UsuarioValidator;
 import com.mycompany.services.UsuarioServices;
-
-import exceptions.QuantityCharactersException;
 
 public abstract class UserFormValidator implements Validator {
 
@@ -27,11 +26,10 @@ public abstract class UserFormValidator implements Validator {
 			UsuarioValidator.emailValidator(uf.getEmail());
 			boolean existe = userServices.existeUsuario(uf.getEmail());
 			if (existe)errors.rejectValue("email", "email.already.exists");
-			// TODO Consultar, está mal si no utilizo la variable "e" de la excepción? Hay
-			// otra manera más performante?
 		} catch (QuantityCharactersException e) {
-			errors.rejectValue("email", "email.invalid.length");
+			errors.rejectValue("email", "email.invalid.length",e.getMessage());
 		} catch (IllegalArgumentException e) {
+			//FIXME Email and Password Exception; y el tercer? NamesException
 			String msg = e.getMessage();
 			if (msg.contains("nulo") || msg.contains("vacio")) {
 				errors.rejectValue("email", "email.empty");

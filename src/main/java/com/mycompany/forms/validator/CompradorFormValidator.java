@@ -2,10 +2,10 @@ package com.mycompany.forms.validator;
 
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
+
+import com.mycompany.exceptions.QuantityCharactersException;
 import com.mycompany.forms.CompradorForm;
 import com.mycompany.models.validator.CompradorValidator;
-
-import exceptions.QuantityCharactersException;
 
 @Component
 public class CompradorFormValidator extends UserFormValidator {

@@ -1,10 +1,7 @@
-package exceptions;
+package com.mycompany.exceptions;
 
 public class QuantityCharactersException extends RuntimeException{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	private static final String CANT_CARACTERES_INVALIDA = "La cantidad de caracteres debe ser entre %d y %d";

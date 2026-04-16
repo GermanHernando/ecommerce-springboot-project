@@ -7,7 +7,7 @@ public class ItemPedidoDTO {
 	private Double precio;
 	private Integer cantidad;
 	
-	//TODO Consultar si esta bien que sean los DTOS o si deben ser del Models
+	
 	public PedidoDTO getPedido() {
 		return pedido;
 	}
