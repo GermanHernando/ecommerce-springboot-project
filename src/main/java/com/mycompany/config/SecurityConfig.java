@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 
+import com.mycompany.api.rest.LoginApiRestService;
 import com.mycompany.enums.Permiso;
 
 @Configuration
@@ -18,7 +19,8 @@ public class SecurityConfig {
 		
 		return http.securityMatcher("/api/**")
 			.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-			.authorizeHttpRequests(request -> request.anyRequest().authenticated())
+			.authorizeHttpRequests(request -> request.requestMatchers(LoginApiRestService.API_LOGIN_URL).permitAll() 
+			.anyRequest().authenticated())
 			.csrf(csrt -> csrt.disable())
 			.build();						
 	}

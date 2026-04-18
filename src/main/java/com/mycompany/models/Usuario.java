@@ -59,8 +59,6 @@ public abstract class Usuario {
 		this.permisos.add(Permiso.ADMINISTRADOR);
 	}
 	
-
-	// TODO Validar que no haya emails duplicados en DB
 	public void setEmail(String email) throws QuantityCharactersException {
 		this.email = UsuarioValidator.emailValidator(email).toLowerCase().trim();
 	}

@@ -57,7 +57,7 @@ public class UsuarioServicesImp implements UsuarioServices {
 	    return usuarios.isEmpty() ? null : usuarios.get(0);
 	}
 
-	//TODO Corregir usando un generic porque si tengo mas de un tipo de usuario, ahora solo mapeo CompradorDTO
+	//TODO Corregir usando un generic porque si tengo mas de un tipo de usuario, ahora solo mapeo CompradorDTO o ver para hacer CompradorServicesImp
 	@Override
 	public List<UsuarioDTO> listAll() {
 		List<Usuario>usuarios = this.repository.findAll();
