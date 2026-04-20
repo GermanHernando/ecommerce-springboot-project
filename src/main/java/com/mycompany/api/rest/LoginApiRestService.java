@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mycompany.forms.LoginForm;
 import com.mycompany.models.Usuario;
-import com.mycompany.services.JWTService;
+import com.mycompany.services.JWTServices;
 import com.mycompany.services.UsuarioServices;
 
 @RestController
@@ -21,7 +21,7 @@ public class LoginApiRestService  {
 	@Autowired
 	private UsuarioServices userService;
 	@Autowired
-	private JWTService jwtService;
+	private JWTServices jwtService;
 	
 	@PostMapping(value = API_LOGIN_URL, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<String> login(@RequestBody LoginForm loginFormulario) {
