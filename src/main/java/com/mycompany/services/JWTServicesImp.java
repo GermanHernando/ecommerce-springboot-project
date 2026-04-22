@@ -1,8 +1,10 @@
 package com.mycompany.services;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -20,12 +22,24 @@ public class JWTServicesImp implements JWTServices {
 
 	private final String KEY_EMAIL = "email";
 	private final String KEY_AUTHORIZATION = "authorization";
-
+	@Value("${jwt.secret.password}")
+	private String secretPassword;
+	
+	
 	@Override
 	public String buildToken(Usuario usuario) {
-		return JWT.create().withKeyId("my-app-" + usuario.getId()).withClaim(KEY_EMAIL, usuario.getEmail())
+		return JWT.create().withKeyId("my-app-" + usuario.getId())
+				.withExpiresAt(Instant.now().plusSeconds(7200)) //2hs
+				.withClaim(KEY_EMAIL, usuario.getEmail())
 				.withClaim(KEY_AUTHORIZATION, this.obtenerPermisosUsuarios(usuario))
-				.sign(Algorithm.HMAC512("my-secret-password"));
+				.sign(Algorithm.HMAC512(secretPassword));
+	}
+
+	@Override
+	public boolean isValidToken(String token) {
+		DecodedJWT decodedToken = JWT.decode(token);
+		Instant instant = decodedToken.getExpiresAtAsInstant();
+		return Instant.now().isBefore(instant);
 	}
 
 	@Override

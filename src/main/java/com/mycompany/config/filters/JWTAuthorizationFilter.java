@@ -23,20 +23,26 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
 
 	@Autowired
 	private JWTServices jwtService;
-	
+
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
 
 		if (existeTokenJWT(request)) {
 			String token = fetchToken(request);
-			Authentication auth = jwtService.buildAuthentication(token);
-			
-			SecurityContext contexto = SecurityContextHolder.getContext();
-			contexto.setAuthentication(auth);
-			
+			if (isValidToken(token)) {
+				Authentication auth = jwtService.buildAuthentication(token);
+				SecurityContext contexto = SecurityContextHolder.getContext();
+				contexto.setAuthentication(auth);
+			}else {
+				SecurityContextHolder.clearContext();
+			}
 		}
 		filterChain.doFilter(request, response);
+	}
+
+	private boolean isValidToken(String token) {
+		return jwtService.isValidToken(token);
 	}
 
 	private boolean existeTokenJWT(HttpServletRequest request) {
