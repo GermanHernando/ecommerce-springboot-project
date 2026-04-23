@@ -23,17 +23,17 @@ public class CompradorFormValidator extends UserFormValidator {
 		 try {
 	            CompradorValidator.nombreValidator(cf.getNombre());
 	        } catch (QuantityCharactersException e) {
-	            errors.rejectValue("nombre", "nombre.invalid.length");
+	            errors.rejectValue("nombre", e.getMessage());
 	        } catch (IllegalArgumentException e) {
-	            errors.rejectValue("nombre", "nombre.empty");
+	            errors.rejectValue("nombre", e.getMessage());
 	        }
 
 	        try {
 	            CompradorValidator.apellidoValidator(cf.getApellido());
 	        } catch (QuantityCharactersException e) {
-	            errors.rejectValue("apellido", "apellido.invalid.length");
+	            errors.rejectValue("apellido", e.getMessage());
 	        } catch (IllegalArgumentException e) {
-	            errors.rejectValue("apellido", "apellido.empty");
+	            errors.rejectValue("apellido", e.getMessage());
 	        }
 	    }
 

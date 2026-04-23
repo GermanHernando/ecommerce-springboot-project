@@ -8,6 +8,8 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import com.mycompany.enums.Permiso;
 import com.mycompany.exceptions.QuantityCharactersException;
+import com.mycompany.exceptions.UserEmailException;
+import com.mycompany.exceptions.UserPasswordException;
 import com.mycompany.models.validator.UsuarioValidator;
 
 import jakarta.persistence.CollectionTable;
@@ -59,11 +61,11 @@ public abstract class Usuario {
 		this.permisos.add(Permiso.ADMINISTRADOR);
 	}
 	
-	public void setEmail(String email) throws QuantityCharactersException {
+	public void setEmail(String email) throws QuantityCharactersException,UserEmailException {
 		this.email = UsuarioValidator.emailValidator(email).toLowerCase().trim();
 	}
 
-	public void setContrasenia(String contrasenia) throws QuantityCharactersException {
+	public void setContrasenia(String contrasenia) throws QuantityCharactersException, UserPasswordException {
 		this.contrasenia = UsuarioValidator.contraseniaValidator(contrasenia);
 	}
 

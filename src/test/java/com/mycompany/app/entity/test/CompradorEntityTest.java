@@ -9,6 +9,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
 import com.mycompany.exceptions.QuantityCharactersException;
+import com.mycompany.exceptions.UserEmailException;
+import com.mycompany.exceptions.UserPasswordException;
 import com.mycompany.models.Comprador;
 
 import helpers.CompradorHelper;
@@ -26,21 +28,21 @@ public class CompradorEntityTest {
 	// EMAIL INVALIDO
 	@Test
 	public void testConstructorEmailNull() {
-		assertThrows(IllegalArgumentException.class, () -> {
+		assertThrows(UserEmailException.class, () -> {
 			CompradorHelper.crearCompradorEmailNull();
 		});
 	}
 
 	@Test
 	public void testConstructorEmailVacio() {
-		assertThrows(IllegalArgumentException.class, () -> {
+		assertThrows(UserEmailException.class, () -> {
 			CompradorHelper.crearCompradorEmailVacio();
 		});
 	}
 
 	@Test
 	public void testConstructorEmailFormatoInvalido() {
-		assertThrows(IllegalArgumentException.class, () -> {
+		assertThrows(UserEmailException.class, () -> {
 			CompradorHelper.crearCompradorEmailFormatoInvalido();
 		});
 	}
@@ -55,12 +57,12 @@ public class CompradorEntityTest {
 	// CONTRASENIA INVALIDA
 	@Test
 	public void testConstructorContraseniaNull() {
-		assertThrows(IllegalArgumentException.class, () -> CompradorHelper.crearCompradorContraseniaNull());
+		assertThrows(UserPasswordException.class, () -> CompradorHelper.crearCompradorContraseniaNull());
 	}
 
 	@Test
 	public void testConstructorContraseniaVacia() {
-		assertThrows(IllegalArgumentException.class, () -> CompradorHelper.crearCompradorContraseniaVacia());
+		assertThrows(UserPasswordException.class, () -> CompradorHelper.crearCompradorContraseniaVacia());
 	}
 
 	@Test
@@ -71,17 +73,17 @@ public class CompradorEntityTest {
 
 	@Test
 	public void testConstructorContraseniaSinMayuscula() {
-		assertThrows(IllegalArgumentException.class, () -> CompradorHelper.crearCompradorContraseniaSinMayuscula());
+		assertThrows(UserPasswordException.class, () -> CompradorHelper.crearCompradorContraseniaSinMayuscula());
 	}
 
 	@Test
 	public void testConstructorContraseniaSinNumero() {
-		assertThrows(IllegalArgumentException.class, () -> CompradorHelper.crearCompradorContraseniaSinNumero());
+		assertThrows(UserPasswordException.class, () -> CompradorHelper.crearCompradorContraseniaSinNumero());
 	}
 
 	@Test
 	public void testConstructorContraseniaSinEspecial() {
-		assertThrows(IllegalArgumentException.class, () -> CompradorHelper.crearCompradorContraseniaSinEspecial());
+		assertThrows(UserPasswordException.class, () -> CompradorHelper.crearCompradorContraseniaSinEspecial());
 	}
 
 	// NOMBRE INVALIDO
