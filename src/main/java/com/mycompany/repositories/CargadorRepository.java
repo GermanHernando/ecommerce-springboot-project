@@ -1,10 +1,11 @@
 package com.mycompany.repositories;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Service;
 
 import com.mycompany.models.Cargador;
 
-public interface CargadorRepository extends JpaRepository<Cargador, Long> {
+@Service
+public interface CargadorRepository extends ProductoRepository<Cargador> {
 
 	
 	

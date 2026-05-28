@@ -1,11 +1,9 @@
 package com.mycompany.services;
 
-import java.util.List;
-
 import com.mycompany.models.Cargador;
 
-public interface CargadorServices {
+public interface CargadorServices extends ProductoServices<Cargador>{
 
-	public  List<Cargador> getProductos();
-	
+
+
 }

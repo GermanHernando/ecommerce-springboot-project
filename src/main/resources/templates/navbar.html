@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org"
-xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <body>
 
 	<th:block th:fragment="navbar">
@@ -11,7 +11,11 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 				<li><a th:href="@{/productos}" th:text="#{nav.productos}">Productos</a></li>
 				<li><a th:href="@{/ofertas}" th:text="#{nav.ofertas}">Ofertas</a></li>
 				<li><a th:href="@{/contacto}" th:text="#{nav.contacto}">Contacto</a></li>
-				<li sec:authorize="hasRole('ROLE_ADMINISTRADOR')"><a th:href="@{admin/users}" th:text="#{nav.usuarios}">Usuarios</a></li>
+				<li sec:authorize="hasRole('ROLE_ADMINISTRADOR')"><a
+					th:href="@{admin/users}" th:text="#{nav.usuarios}">Usuarios</a></li>
+				<li sec:authorize="hasRole('ROLE_ADMINISTRADOR')"><a
+				th:href="@{admin/productsManagement}" th:text="#{nav.productsManagement}">Gestion Productos
+				</a></li>
 
 			</ul>
 			<div class="nav-actions">
@@ -32,9 +36,9 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
         </svg>
 					<span class="cart-count" th:text="${cartCount} ?: '0'">0</span>
 				</button>
-				<!-- Fragmento de usuario -->
-                <div th:replace="~{usertopbar :: userActions}"></div>
-			</div>
+
+				
+				<div th:replace="~{usertopbar :: userActions}"></div>
 		</nav>
 		<script th:src="@{/javascript/navbar.js}"></script>
 	</th:block>

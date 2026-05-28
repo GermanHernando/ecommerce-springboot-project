@@ -1,34 +1,27 @@
 package com.mycompany.services.test;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
-import com.mycompany.App;
 import com.mycompany.models.Celular;
-import com.mycompany.services.ProductoServices;
+import com.mycompany.services.CelularServices;
 
 import helpers.CelularHelper;
 
-@SpringBootTest(classes = App.class)
-@ActiveProfiles("test")
-public class CelularServiceTest {
 
-	@Autowired
-	private ProductoServices producto;
+@ActiveProfiles("test")
+public class CelularServiceTest extends ProductoServiceTest<Celular, CelularServices> {
 
 	@Test
 	public void testSaveCelularCelularSucces() {
 		Celular c = CelularHelper.crearCelularValido();
-		producto.guardarProducto(c);
+		guardarProducto(c);
 	}
 
 	@Test
 	public void testDeleteCelularCelularSucces() {
 		Celular c = CelularHelper.crearCelularValido();
-		producto.eliminarProducto(c);
+		eliminarProducto(c);
 	}
-
 
 }

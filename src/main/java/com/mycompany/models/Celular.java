@@ -24,7 +24,7 @@ public class Celular extends Producto {
 	private Integer almacenamiento;
 	
 
-	Celular() {}
+	public Celular() {}
 
 	public Celular(String nombre, String marca, String color, Double precio, Integer cantidad, Integer tamanio,
 			String resolucionPantalla, String resolucionCamara, Integer ram, Integer almacenamiento)

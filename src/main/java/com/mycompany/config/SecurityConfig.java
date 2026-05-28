@@ -7,10 +7,12 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
 import com.mycompany.api.rest.LoginApiRestService;
 import com.mycompany.config.filters.JWTAuthorizationFilter;
+import com.mycompany.controllers.LoginController;
 import com.mycompany.enums.Permiso;
 
 @Configuration
@@ -39,15 +41,26 @@ public class SecurityConfig {
 		
 	return	http.securityMatcher("/**")
 			.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED))
+			.exceptionHandling(ex -> ex.accessDeniedHandler(accessDeniedHandler()))
 			.authorizeHttpRequests(auth -> auth.requestMatchers("/css/**", "/images/**", "/javascript/**").permitAll()
-					.requestMatchers("/admin/**").hasAnyRole(Permiso.ADMINISTRADOR.name())
-					.requestMatchers("/login","/sigin").permitAll()
-					.anyRequest().permitAll())
-		//FIXME Consultar, me tira un error en la url y no me deja loguearme pero si voy a /admin/users desde la url, funciona bien
-		.formLogin(page -> page.loginPage("/login").permitAll().defaultSuccessUrl("/login"))
+			.requestMatchers("/login","/sigin","/index","/register").permitAll()
+			.requestMatchers("/admin/**").hasAnyRole(Permiso.ADMINISTRADOR.name())
+			.anyRequest().authenticated())
+		.formLogin(page -> page.loginPage(LoginController.PATH_CONTEXT_URL_LOGIN).permitAll())
 		.build();
 		
 	}
+
+	@Bean
+	public AccessDeniedHandler accessDeniedHandler() {
+		return (request,response,accessDeniedException) ->{
+			response.sendRedirect(LoginController.PATH_CONTEXT_URL_LOGIN);
+		};
+	}
+	
+	
+	
+	
 	 
 	
 	

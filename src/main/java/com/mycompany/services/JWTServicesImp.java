@@ -22,6 +22,7 @@ public class JWTServicesImp implements JWTServices {
 
 	private final String KEY_EMAIL = "email";
 	private final String KEY_AUTHORIZATION = "authorization";
+	
 	@Value("${jwt.secret.password}")
 	private String secretPassword;
 	

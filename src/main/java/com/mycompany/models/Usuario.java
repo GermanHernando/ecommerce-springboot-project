@@ -47,7 +47,7 @@ public abstract class Usuario {
 	@Column(name = "PERMISO_ID" )
 	private List<Permiso>permisos;
 
-	Usuario() {}
+	public Usuario() {}
 
 	public Usuario(String email, String contrasenia) throws QuantityCharactersException {
 		this.setEmail(email);

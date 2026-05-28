@@ -15,7 +15,7 @@ public class Cargador extends Producto {
 	@Column(name = "CARGA_RAPIDA")
 	private Boolean cargaRapida;
 	
-	Cargador(){}
+	public Cargador(){}
 	
 	public Cargador(String nombre, String marca, String color, Double precio, Integer cantidad, Integer wats,
 			Boolean cargaRapida) {

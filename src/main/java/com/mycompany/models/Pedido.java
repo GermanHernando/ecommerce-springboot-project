@@ -45,7 +45,7 @@ public class Pedido implements Calculable {
 	@JoinColumn(name = "PAGO_ID")
 	private Pago pago;
 
-	Pedido() {
+	public Pedido() {
 	}
 
 	public Pedido(Comprador comprador, List<ItemPedido> itemsCarrito, Double total) {

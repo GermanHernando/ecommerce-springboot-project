@@ -1,10 +1,8 @@
 package com.mycompany.services;
 
-import java.util.List;
-
 import com.mycompany.models.Celular;
 
-public interface CelularServices {
+public interface CelularServices extends ProductoServices<Celular> {
 
-	public  List<Celular> getProductos();
+	
 }

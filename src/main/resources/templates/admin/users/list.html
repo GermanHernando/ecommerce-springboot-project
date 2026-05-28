@@ -62,11 +62,7 @@ rel="stylesheet" />
 				</table>
 			</div>
 			<!-- Mensaje si no hay usuarios -->
-			<p class="users-empty" th:if="${#lists.isEmpty(listado)}">No hay
-				usuarios registrados.</p>
+			<p class="users-empty" th:if="${#lists.isEmpty(listado)}">No hay usuarios registrados.</p>
 
 		</div>
 	</section>
-
-	<!-- FOOTER -->
-	<div th:replace="~{unsecured/footer :: footer}"></div>

@@ -31,7 +31,7 @@ public abstract class Producto {
 	@Column(name = "CANTIDAD")
 	private Integer cantidad;
 	
-	Producto(){}
+	public Producto(){}
 	
 	public Producto(String nombre, String marca, String color, Double precio, Integer cantidad) {
 		this.setNombre(nombre);

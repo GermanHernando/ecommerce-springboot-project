@@ -3,11 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" th:content="#{page.description}" />
   <title th:text="#{page.title}">MOVITEK — Tienda de Celulares</title>
   <link rel="stylesheet" th:href="@{/css/indexStyles.css}" />
+  <link rel="stylesheet" th:href="@{/css/footer.css}" />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
 </head>
 <body>
+
+  <main>
 
   <!-- NAVBAR -->
   <div th:replace="~{navbar :: navbar}"></div>
@@ -17,7 +21,8 @@
     <div class="hero-content">
       <span class="hero-tag"    th:text="#{hero.tag}">Nueva colección 2025</span>
       <h1 class="hero-title">
-        <span th:text="#{hero.title}">Tecnología</span><br/>
+        <span th:text="#{hero.title}">Tecnología</span>  
+
         <em th:text="#{hero.title.em}">en tus manos</em>
       </h1>
       <p class="hero-subtitle" th:text="#{hero.subtitle}">Los últimos smartphones y accesorios de carga. Rápido, simple, confiable.</p>
@@ -56,7 +61,7 @@
 
         <a th:href="@{/celulares}" class="cat-card cat-phones">
           <div class="cat-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" role="img" aria-labelledby="titleId_phones"><title id="titleId_phones" th:text="#{cat.phones.icon.alt}">Icono de celulares</title><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
           </div>
           <div class="cat-info">
             <h3 th:text="#{cat.phones.title}">Celulares</h3>
@@ -71,7 +76,7 @@
 
         <a th:href="@{/cargadores}" class="cat-card cat-chargers">
           <div class="cat-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 18H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h18a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2"/><polyline points="12 2 7 7 12 7 7 22"/></svg>
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" role="img" aria-labelledby="titleId_chargers"><title id="titleId_chargers" th:text="#{cat.chargers.icon.alt}">Icono de cargadores</title><path d="M5 18H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h18a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2"/><polyline points="12 2 7 7 12 7 7 22"/></svg>
           </div>
           <div class="cat-info">
             <h3 th:text="#{cat.chargers.title}">Cargadores</h3>
@@ -82,7 +87,7 @@
 
         <a th:href="@{/ofertas}" class="cat-card cat-offers">
           <div class="cat-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" role="img" aria-labelledby="titleId_offers"><title id="titleId_offers" th:text="#{cat.offers.icon.alt}">Icono de ofertas</title><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
           </div>
           <div class="cat-info">
             <h3 th:text="#{cat.offers.title}">Ofertas</h3>
@@ -90,7 +95,7 @@
               #{cat.offers.subtitle} = "Hasta {0}% off"
               Thymeleaf reemplaza {0} con maxDiscount del controlador
             -->
-            <span th:text="#{cat.offers.subtitle(${maxDiscount} ?: 30)}">Hasta 30% off</span>
+            <span th:text="#{cat.offers.subtitle(${maxDiscount} ?: 30 )}">Hasta 30% off</span>
           </div>
           <div class="cat-arrow">→</div>
         </a>
@@ -138,7 +143,7 @@
             <h3 class="product-name"    th:text="${product.name}">Galaxy S24 Ultra</h3>
             <div class="product-rating">
               <span class="stars">★★★★★</span>
-              <span class="rating-count" th:text="'(' + ${product.reviews} + ')')">(128)</span>
+              <span class="rating-count" th:text="'(' + ${product.reviews} + ')'">(128)</span>
             </div>
             <div class="product-footer">
               <div>
@@ -156,7 +161,7 @@
                 <input type="hidden" name="productId" th:value="${product.id}" />
                 <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"
                        th:if="${_csrf != null}" />
-                <button type="submit" class="btn-add" th:text="#{cart.add.button}">+</button>
+                <button type="submit" class="btn-add" th:text="#{cart.add.button}" aria-label="#{cart.add.button.aria}">+</button>
               </form>
             </div>
           </div>
@@ -197,7 +202,8 @@
         <div class="promo-text">
           <span class="promo-tag" th:text="#{promo.tag}">Oferta limitada</span>
           <h2>
-            <span th:text="#{promo.title}">Carga rápida</span><br/>
+            <span th:text="#{promo.title}">Carga rápida</span>  
+
             <strong th:text="#{promo.price(${promoPrice} ?: '29.990')}">65W por $29.990</strong>
           </h2>
           <p th:text="#{promo.description}">Compatible con todos los modelos. Envío gratis a todo el país.</p>
@@ -222,7 +228,7 @@
 
         <div class="benefit-item">
           <div class="benefit-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" role="img" aria-labelledby="titleId_shipping"><title id="titleId_shipping" th:text="#{benefit.shipping.icon.alt}">Icono de envío</title><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
           </div>
           <div>
             <h4 th:text="#{benefit.shipping.title}">Envío gratis</h4>
@@ -233,7 +239,7 @@
 
         <div class="benefit-item">
           <div class="benefit-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" role="img" aria-labelledby="titleId_warranty"><title id="titleId_warranty" th:text="#{benefit.warranty.icon.alt}">Icono de garantía</title><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
           <div>
             <h4 th:text="#{benefit.warranty.title}">Garantía oficial</h4>
@@ -243,7 +249,7 @@
 
         <div class="benefit-item">
           <div class="benefit-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" role="img" aria-labelledby="titleId_installments"><title id="titleId_installments" th:text="#{benefit.installments.icon.alt}">Icono de cuotas</title><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
           </div>
           <div>
             <h4 th:text="#{benefit.installments.title}">Hasta 12 cuotas</h4>
@@ -253,7 +259,7 @@
 
         <div class="benefit-item">
           <div class="benefit-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" role="img" aria-labelledby="titleId_support"><title id="titleId_support" th:text="#{benefit.support.icon.alt}">Icono de soporte</title><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
           </div>
           <div>
             <h4 th:text="#{benefit.support.title}">Soporte 24/7</h4>
@@ -264,6 +270,8 @@
       </div>
     </div>
   </section>
+
+  </main>
 
   <!-- FOOTER -->
  <div th:replace="~{unsecured/footer :: footer}"></div>

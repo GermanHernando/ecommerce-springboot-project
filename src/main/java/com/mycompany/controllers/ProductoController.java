@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mycompany.models.Cargador;
 import com.mycompany.models.Celular;
@@ -23,23 +24,24 @@ public class ProductoController {
 	private CargadorServices cargadorService;
 
 	@GetMapping(URL_CONTEXT_PRODUCTOS)
-	public String productos(Model model) {
+	public String productos(@RequestParam(name="tipo",required=false,defaultValue = "celulares")String tipo,Model model) {
 		List<Celular> celulares = new ArrayList<Celular>();
 		List<Cargador> cargadores = new ArrayList<Cargador>();
 		try {
-			celulares = celularService.getProductos();
+			if ("cargadores".equals(tipo)) {
+				cargadores = cargadorService.getProductos();
+				model.addAttribute("cargadores", cargadores);
+				model.addAttribute("totalProductos", cargadores.size());
+			} else {
+				celulares = celularService.getProductos();
+				model.addAttribute("celulares", celulares);
+				model.addAttribute("totalProductos", celulares.size());
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		try {
-			cargadores = cargadorService.getProductos();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		model.addAttribute("celulares", celulares);
-		model.addAttribute("cargadores", cargadores);
-		model.addAttribute("totalProductos", celulares.size() + cargadores.size());
+		
+		model.addAttribute("tipoActivo", tipo);
 		model.addAttribute("currentYear", java.time.Year.now().getValue());
 
 		return URL_LINK_PRODUCTOS; // → templates /unsecured/productos.html
